@@ -55,6 +55,14 @@ body{grid-template-rows:58px auto minmax(0,1fr) auto}
 .timeline-dock-actions #timelineExportBtn{border-color:#454857}
 .timeline-dock-actions #timelineToggleBtn{padding:0 9px;color:#b9adff}
 .timeline-dock-content{display:block;flex:1;min-height:0;height:auto;padding-top:5px;overflow:hidden}
+.timeline-dock-track{position:relative}
+.timeline-ruler{touch-action:pan-x;cursor:crosshair;user-select:none}
+.timeline-playhead{position:absolute;top:0;z-index:6;width:2px;min-height:24px;background:#ff4058;box-shadow:0 0 8px #ff405888;pointer-events:none}
+.timeline-playhead:before{content:"";position:absolute;top:0;left:-4px;width:10px;height:10px;border-radius:50%;background:#ff4058;box-shadow:0 0 0 2px #171923}
+.timeline-lane{gap:0}
+.dock-clip.compact{grid-template-columns:minmax(0,1fr) 20px;gap:3px;padding:3px}
+.dock-clip.compact .dock-clip-thumb,.dock-clip.compact .dock-clip-details label{display:none}
+.dock-clip.compact .dock-clip-details>span{font-size:9px}
 .timeline-dock-track{display:block;width:100%;height:100%;min-width:0;min-height:0;padding:0 0 4px;overflow:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#414554 transparent}
 .timeline-ruler{position:sticky;top:0;width:max-content;min-width:100%;height:24px;display:flex;align-items:center;border-bottom:1px solid #30333f;background:#15161e;color:#8990a0;font-size:10px}
 .timeline-ruler span{height:15px;flex:0 0 210px;padding-left:7px;border-left:1px solid #555968;line-height:15px}
