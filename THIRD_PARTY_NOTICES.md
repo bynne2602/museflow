@@ -10,7 +10,7 @@ MuseFlow bundles the single-thread FFmpeg WebAssembly core from `@ffmpeg/core` 0
 - Package: https://www.npmjs.com/package/@ffmpeg/core/v/0.12.10
 - Package integrity: `sha512-dzNplnn2Nxle2c2i2rrDhqcB19q9cglCkWnoMTDN9Q9l3PvdjZWd1HfSPjCNWc/p8Q3CT+Es9fWOR0UhAeYQZA==`
 
-The bundled FFmpeg core includes FFmpeg n5.1.4 and codec libraries including x264 and x265. Because the complete extension includes this GPL component, redistributing the extension must comply with GPL-2.0-or-later requirements, including providing the corresponding source for the GPL-covered distribution. The MuseFlow-authored source also retains the MIT terms stated in [LICENSE](LICENSE); those terms do not replace the GPL obligations for the bundled distribution.
+The bundled FFmpeg core includes FFmpeg n5.1.4 and codec libraries including x264 and x265. MuseFlow is also distributed under GPL-2.0-or-later. Redistribution of the complete extension must comply with GPL-2.0-or-later requirements, including providing the corresponding source for the GPL-covered distribution.
 
 ## FFmpeg.wasm JavaScript wrapper
 

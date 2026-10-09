@@ -97,4 +97,4 @@ Workflows and locally stored media are kept in browser extension storage on your
 
 ## License
 
-MuseFlow's original source code is marked under the [MIT License](LICENSE). The bundled FFmpeg WebAssembly engine is GPL-2.0-or-later, so redistribution of the complete extension must also meet the GPL requirements. See [third-party notices](THIRD_PARTY_NOTICES.md) and the included license texts.
+MuseFlow is licensed under the [GNU General Public License v2.0 or later (GPL-2.0-or-later)](LICENSE), matching the bundled FFmpeg core. The FFmpeg JavaScript wrapper remains MIT-licensed. See [third-party notices](THIRD_PARTY_NOTICES.md) and the included license texts.

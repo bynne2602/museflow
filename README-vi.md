@@ -97,4 +97,4 @@ Workflow và media lưu cục bộ được giữ trong bộ nhớ extension tr�
 
 ### Giấy phép
 
-Mã nguồn gốc MuseFlow được ghi nhận theo [giấy phép MIT](LICENSE). Engine FFmpeg WebAssembly đi kèm theo GPL-2.0-or-later, nên khi phân phối toàn bộ extension cũng phải tuân thủ các yêu cầu của GPL. Xem [thông báo giấy phép bên thứ ba](THIRD_PARTY_NOTICES.md) và các tệp giấy phép đi kèm.
+MuseFlow được cấp phép theo [Giấy phép Công cộng GNU phiên bản 2.0 trở lên (GPL-2.0-or-later)](LICENSE), cùng loại với FFmpeg core đi kèm. JavaScript wrapper của FFmpeg vẫn dùng MIT. Xem [thông báo giấy phép bên thứ ba](THIRD_PARTY_NOTICES.md) và các tệp giấy phép liên quan.
