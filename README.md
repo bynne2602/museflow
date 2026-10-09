@@ -10,7 +10,7 @@
 
 ### Demo video
 
-[▶ Watch the 26Flow demo video (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09%2011-17-18.mp4)
+[▶ Watch the 26Flow demo video (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
 
 ### Workflow canvas and Muse.ai
 
@@ -92,7 +92,7 @@ Distributed under the [MIT License](LICENSE). Copyright (c) 2026 26Flow contribu
 
 ### Video demo
 
-[▶ Xem video demo 26Flow (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09%2011-17-18.mp4)
+[▶ Xem video demo 26Flow (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
 
 ### Tính năng
 
