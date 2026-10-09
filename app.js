@@ -581,7 +581,8 @@
       const mimeTypes=requestedFormat==='mp4'?['video/mp4;codecs="avc1.42E01E,mp4a.40.2"','video/mp4;codecs="avc1.424028,mp4a.40.2"','video/mp4;codecs=avc1,mp4a.40.2','video/mp4;codecs=avc1','video/mp4']:['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'];
       recorderMimeType=mimeTypes.find(type=>MediaRecorder.isTypeSupported?.(type))||'';
       if(requestedFormat==='mp4'&&!recorderMimeType)throw new Error('This browser cannot encode MP4 (H.264). Choose WebM, or use a browser with MP4 MediaRecorder support.');
-      recorder=recorderMimeType?new MediaRecorder(canvasStream,{mimeType:recorderMimeType}):new MediaRecorder(canvasStream);
+      const recorderOptions={videoBitsPerSecond:requestedFormat==='mp4'?Math.round(Math.min(14_000_000,Math.max(8_000_000,canvas.width*canvas.height*24*0.35))):undefined,audioBitsPerSecond:192_000};if(recorderMimeType)recorderOptions.mimeType=recorderMimeType;
+      recorder=new MediaRecorder(canvasStream,recorderOptions);
       const chunks=[];recordingPromise=new Promise((resolve,reject)=>{recorder.ondataavailable=event=>{if(event.data?.size)chunks.push(event.data);};recorder.onerror=event=>reject(event.error||new Error('Video encoding failed.'));recorder.onstop=()=>resolve(new Blob(chunks,{type:recorder.mimeType||recorderMimeType||'video/webm'}));});recordingPromise.catch(()=>{});recorder.start(1000);
       for(let index=0;index<clips.length;index++){
         throwIfStopped();
