@@ -28,7 +28,7 @@
 
 ## Features
 
-- **Visual node canvas:** add, move, connect, multi-select, and arrange workflow nodes. Pan and zoom the canvas, and use the context menu for node actions.
+- **Visual node canvas:** add, move, connect, multi-select, and arrange workflow nodes. Hold **Alt** while dragging to copy a node or selection with its incoming connections; press **Ctrl+Z** to undo the last canvas or workflow edit. Pan and zoom the canvas, and use the context menu for node actions.
 - **Prompt tools:** create prompts, negative prompts, append or merge text, and connect multiple prompt sources where supported.
 - **Image workflows:** provide image inputs and references, generate images, resize outputs, and preview connected media.
 - **Video workflows:** generate video clips, optionally use the preceding timeline clip's end frame as a continuity reference, and preview connected video.
