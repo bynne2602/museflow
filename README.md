@@ -30,7 +30,7 @@
 - **Prompt tools:** create prompts, negative prompts, append or merge text, and connect multiple prompt sources where supported.
 - **Image workflows:** provide image inputs and references, generate images, resize outputs, and preview connected media.
 - **Video workflows:** generate video clips, optionally use the preceding timeline clip's end frame as a continuity reference, and preview connected video.
-- **Timeline:** add and reorder clips, set clip durations, preview the sequence, and export the stitched timeline as WebM when supported by the browser.
+- **Timeline:** add and reorder clips, set clip durations, preview the sequence, and export the stitched timeline as WebM or MP4 (H.264) when supported by the browser.
 - **Script to nodes:** turn a scene-based script into connected image/video nodes and an ordered timeline.
 - **Workflow files:** use **Save workflow** to download a reusable JSON file and **Import workflow** to restore it later. Generated and input media are embedded when available; inaccessible remote media remains linked to its original URL.
 - **Local workflow saving:** **Save** and autosave keep the current workflow in the extension's browser storage.
@@ -84,7 +84,7 @@ Workflows and locally stored media are kept in browser extension storage on your
 - **Muse session is unavailable:** sign in to Muse.ai, keep its chat page open, then reload 26Flow and the Muse.ai tab.
 - **Generation does not start or media is missing:** check the Muse.ai page and session, then retry. Muse.ai may change its interface or generation behavior, which can require an extension update.
 - **Muse declines a scene:** 26Flow detects refusal messages, including Vietnamese replies that say a scene cannot be created or offer to make an equivalent, and retries that scene once with a close, safer alternative prompt. It does not wait for confirmation. The retry keeps the scene's narrative role and settings; Muse.ai still determines whether the result can be generated.
-- **Timeline export is unavailable:** use a browser that supports `MediaRecorder` and canvas capture. Export format is WebM.
+- **Timeline export is unavailable:** use a browser that supports `MediaRecorder` and canvas capture. MP4 (H.264) is available only when the browser supports that encoder; WebM remains the compatible option.
 - **Output differs from requested settings:** Muse.ai controls the generated media; the requested aspect ratio, audio, and video options may not always be honored by the service.
 
 ## License

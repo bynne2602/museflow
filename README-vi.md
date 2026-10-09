@@ -30,7 +30,7 @@
 - **Công cụ prompt:** tạo prompt, negative prompt, nối thêm hoặc gộp văn bản; hỗ trợ nối nhiều nguồn prompt ở các cổng phù hợp.
 - **Quy trình ảnh:** đưa ảnh vào, kết nối nhiều ảnh tham chiếu, tạo ảnh, đổi kích thước và xem trước kết quả.
 - **Quy trình video:** tạo clip, tùy chọn dùng frame cuối của clip trước làm ảnh tham chiếu mở đầu để giữ tính liên tục.
-- **Timeline:** thêm và sắp xếp clip, đặt thời lượng, xem trước chuỗi clip và xuất video đã ghép định dạng WebM nếu trình duyệt hỗ trợ.
+- **Timeline:** thêm và sắp xếp clip, đặt thời lượng, xem trước chuỗi clip và xuất video đã ghép thành WebM hoặc MP4 (H.264) nếu trình duyệt hỗ trợ.
 - **Script → Nodes:** chuyển kịch bản chia cảnh thành các node ảnh/video đã nối và timeline theo thứ tự.
 - **Tệp workflow:** chọn **Save workflow** để tải workflow dạng JSON có thể dùng lại, rồi chọn **Import workflow** để mở lại. Media đầu vào và media đã tạo sẽ được nhúng nếu có thể; media từ xa không truy cập được sẽ giữ liên kết gốc.
 - **Tự lưu cục bộ:** nút **Save** và tự động lưu giữ workflow hiện tại trong bộ nhớ extension trên trình duyệt.
@@ -84,7 +84,7 @@ Workflow và media lưu cục bộ được giữ trong bộ nhớ extension tr�
 - **Không nhận phiên Muse:** đăng nhập Muse.ai, giữ trang chat đang mở, sau đó tải lại 26Flow và tab Muse.ai.
 - **Không bắt đầu tạo hoặc không thấy media:** kiểm tra trang và phiên Muse.ai rồi thử lại. Muse.ai có thể thay đổi giao diện hoặc luồng tạo nội dung, khi đó extension cần được cập nhật.
 - **Muse từ chối tạo cảnh:** 26Flow nhận diện lời từ chối, kể cả phản hồi tiếng Việt báo không tạo được hoặc đề nghị tạo bản tương đương, rồi tự thử lại cảnh đó một lần bằng prompt thay thế an toàn gần nhất. Không cần chờ xác nhận. Lần thử lại giữ vai trò của cảnh trong kịch bản và các thiết lập; Muse.ai vẫn quyết định nội dung có được tạo hay không.
-- **Không xuất được timeline:** dùng trình duyệt có hỗ trợ `MediaRecorder` và canvas capture. Định dạng xuất là WebM.
+- **Không xuất được timeline:** dùng trình duyệt hỗ trợ `MediaRecorder` và canvas capture. MP4 (H.264) chỉ khả dụng khi trình duyệt có bộ mã hóa tương thích; WebM vẫn là lựa chọn tương thích hơn.
 - **Kết quả không đúng thông số:** Muse.ai quyết định media đầu ra; dịch vụ có thể không luôn làm theo tỷ lệ ảnh, âm thanh hoặc tùy chọn video được yêu cầu.
 
 ### Giấy phép

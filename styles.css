@@ -46,6 +46,8 @@ body{grid-template-rows:58px auto minmax(0,1fr) auto}
 .timeline-heading small{color:#858a98;font-size:10px;white-space:nowrap}
 .timeline-dock-actions{display:flex;align-items:center;gap:6px;flex:0 0 auto}
 .timeline-dock-actions button{height:32px;min-width:34px;padding:0 10px;border:1px solid #393c49;border-radius:8px;background:#20222c;color:#e9e9ef;font-size:11px;white-space:nowrap}
+.timeline-dock-actions select{height:32px;min-width:78px;padding:0 8px;border:1px solid #393c49;border-radius:8px;background:#20222c;color:#e9e9ef;font-size:11px}
+.timeline-dock-actions select:disabled{opacity:.55}
 .timeline-dock-actions #timelineAddVideoBtn{border-color:#7256de;background:#30264e;color:#e6deff}
 .timeline-dock-actions #timelineImportAllBtn{border-color:#414553;color:#ddd9ef}
 .timeline-dock-actions #timelineImportAllBtn:disabled{opacity:.45;cursor:not-allowed}
@@ -108,6 +110,7 @@ body{grid-template-rows:58px auto minmax(0,1fr) auto}
   .timeline-heading #timelineClipCount{padding:3px 6px;font-size:9px}
   .timeline-dock-actions{gap:4px}
   .timeline-dock-actions button{height:30px;padding-inline:7px;font-size:10px}
+  .timeline-dock-actions select{height:30px;min-width:68px;padding-inline:5px;font-size:9px}
   .timeline-dock-content{padding-top:4px}
   .timeline-ruler span{flex-basis:150px}
   .timeline-lane{gap:8px;padding-top:8px}
