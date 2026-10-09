@@ -28,7 +28,7 @@
 
 ### Tính năng
 
-- **Canvas node:** thêm, di chuyển, nối, chọn nhiều và sắp xếp node. Giữ **Alt** khi kéo để sao chép node hoặc nhóm node cùng các kết nối đầu vào; nhấn **Ctrl+Z** để hoàn tác chỉnh sửa workflow gần nhất. Nhấn **G** rồi kéo trên canvas để tạo khung nhóm node; nhấn **T** để thêm Text node. Khung nhóm được lưu trong workflow. Có thể phóng to/thu nhỏ, kéo canvas và mở thao tác bằng menu chuột phải.
+- **Canvas node:** thêm, di chuyển, nối, chọn nhiều và sắp xếp node. Giữ **Alt** khi kéo để sao chép node hoặc nhóm node cùng các kết nối đầu vào; nhấn **Ctrl+Z** để hoàn tác chỉnh sửa workflow gần nhất. Nhấn **G** rồi kéo trên canvas để tạo khung nhóm node; nhấn **T** để thêm ghi chú văn bản trực tiếp trên canvas. Ghi chú có thể kéo, sửa, và được lưu cùng workflow. Khung nhóm được lưu trong workflow. Có thể phóng to/thu nhỏ, kéo canvas và mở thao tác bằng menu chuột phải.
 - **Công cụ prompt:** tạo prompt, negative prompt, nối thêm hoặc gộp văn bản; Text Merge nhận nhiều nguồn text trên cùng một cổng và ghép theo thứ tự kết nối bằng dấu phân cách tùy chỉnh.
 - **Quy trình ảnh:** đưa ảnh vào, kết nối nhiều ảnh tham chiếu, tạo ảnh, đổi kích thước và xem trước kết quả.
 - **Quy trình video:** tạo clip, tùy chọn dùng frame cuối của clip trước làm ảnh tham chiếu mở đầu để giữ tính liên tục.

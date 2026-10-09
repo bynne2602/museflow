@@ -13,7 +13,7 @@
     <div class="toolbar-tools" aria-label="Add workflow nodes">
       <button id="scriptImportBtn" type="button">＋ Script → Nodes</button>
       <button data-add="prompt">+ Prompt</button>
-      <button data-add="text">+ Text</button>
+      <button data-add="text">+ Text note</button>
       <button data-add="negativePrompt">+ Negative</button>
       <button data-add="textAppend">+ Text Append</button>
       <button data-add="textConcat">+ Text Merge</button>
@@ -47,7 +47,7 @@
     <svg id="edges"></svg>
     <div id="canvas"></div>
     <div id="canvasTools" class="canvas-tools" aria-label="Canvas controls">
-      <button id="handTool" type="button" title="Hand tool (H) · Hold Space to pan · Alt-drag to copy · Ctrl+Z to undo · G group · T Text">✋</button>
+      <button id="handTool" type="button" title="Hand tool (H) · Hold Space to pan · Alt-drag to copy · Ctrl+Z to undo · G group · T Text note">✋</button>
       <button id="groupTool" type="button" title="Draw a group region (G)">▱</button>
       <button id="zoomOut" type="button" title="Zoom out">−</button>
       <span id="zoomLevel">100%</span>
@@ -71,6 +71,7 @@
     <div class="menu-caption">Add node</div>
     <button data-context-action="add:prompt" role="menuitem">＋ Prompt</button>
     <button data-context-action="add:negativePrompt" role="menuitem">＋ Negative Prompt</button>
+    <button data-context-action="add:text" role="menuitem">＋ Text note</button>
     <button data-context-action="add:textAppend" role="menuitem">＋ Text Append</button>
     <button data-context-action="add:textConcat" role="menuitem">＋ Text Merge</button>
     <button data-context-action="add:imageInput" role="menuitem">＋ Image Input</button>
