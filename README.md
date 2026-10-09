@@ -8,6 +8,10 @@
 
 ## Screenshots / Ảnh giao diện
 
+### Demo video
+
+[▶ Watch the 26Flow demo video (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09%2011-17-18.mp4)
+
 ### Workflow canvas and Muse.ai
 
 ![26Flow workflow canvas connected to a Muse.ai session](docs/screenshots/26flow-workflow-canvas.png)
@@ -85,6 +89,10 @@ Distributed under the [MIT License](LICENSE). Copyright (c) 2026 26Flow contribu
 <a id="tieng-viet"></a>
 
 **26Flow** là tiện ích mở rộng tạo quy trình trực quan bằng phiên Muse.ai bạn đã đăng nhập. Bạn có thể nối các node trên canvas, tạo ảnh/video và sắp xếp clip video trên timeline.
+
+### Video demo
+
+[▶ Xem video demo 26Flow (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09%2011-17-18.mp4)
 
 ### Tính năng
 
