@@ -4,7 +4,7 @@
 
 [Tiếng Việt](README-vi.md)
 
-**Quick install:** [Download MuseFlow-extension.zip](https://github.com/bynne2602/museflow/releases/latest/download/MuseFlow-extension.zip) · No npm install or build step required.
+**Quick install:** [Download MuseFlow-extension.zip](https://github.com/bynne2602/museflow/raw/refs/heads/main/downloads/MuseFlow-extension.zip) · No npm install or build step required.
 
 ## Screenshots
 
@@ -47,7 +47,7 @@
 
 ## Install
 
-1. Download [MuseFlow-extension.zip](https://github.com/bynne2602/museflow/releases/latest/download/MuseFlow-extension.zip) from GitHub Releases and extract it to a permanent folder. If a release package is not available, [download the repository ZIP](https://github.com/bynne2602/museflow/archive/refs/heads/main.zip) instead.
+1. Download [MuseFlow-extension.zip](https://github.com/bynne2602/museflow/raw/refs/heads/main/downloads/MuseFlow-extension.zip) and extract it to a permanent folder. Alternatively, [download the repository ZIP](https://github.com/bynne2602/museflow/archive/refs/heads/main.zip).
 2. Open your browser's extensions page (for Chrome, `chrome://extensions`).
 3. Enable **Developer mode**.
 4. Select **Load unpacked** and choose the folder containing `manifest.json`.
@@ -58,7 +58,7 @@ There is no npm install or build step. The downloaded ZIP contains the extension
 
 ### Download a packaged ZIP
 
-The release ZIP contains only the files needed to run the extension and its required license notices. Extract it first, then select the folder containing `manifest.json` in **Load unpacked**. Do not select the ZIP file itself.
+The packaged ZIP contains the extension, bundled FFmpeg files, and their required license notices. Extract it first, then select the folder containing `manifest.json` in **Load unpacked**. Do not select the ZIP file itself.
 
 ### Update
 
