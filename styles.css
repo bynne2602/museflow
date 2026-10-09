@@ -31,6 +31,8 @@ body:has(#timelineDock:not(.collapsed):not(.no-timeline)) #viewport{height:calc(
 .donation-details span{color:#a0a3af;font-size:12px}
 .donation-details strong{font-size:17px;letter-spacing:.04em}
 .donation-open-link{display:inline-block;margin-top:12px;color:#c2b5ff;font-size:12px}
+.donation-bmac-link{display:block;margin-top:14px;padding:11px 14px;border:1px solid #e3c500;border-radius:9px;background:#ffdd00;color:#171717;font-size:13px;font-weight:800;text-decoration:none;transition:background .15s,transform .15s}
+.donation-bmac-link:hover{background:#ffe642;transform:translateY(-1px)}
 @media(max-width:760px){.toolbar-actions #buyCoffeeBtn{font-size:0;padding-inline:8px}.toolbar-actions #buyCoffeeBtn:after{content:'☕';font-size:14px}}
 #timelinePreviewPanel video.is-active{z-index:3}#timelinePreviewPanel video.is-fading{opacity:0!important;z-index:2}
 .canvas-menu{max-height:70vh;overflow-y:auto;overscroll-behavior:contain}
