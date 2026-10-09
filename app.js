@@ -566,7 +566,9 @@
     try{
       ffmpeg.on('log',onLog);ffmpeg.on('progress',onProgress);
       button.textContent='Loading FFmpeg…';setRunStatus('Loading the local FFmpeg video engine…','warn');
-      await ffmpeg.load({classWorkerURL:chrome.runtime.getURL('vendor/ffmpeg/814.ffmpeg.js'),coreURL:chrome.runtime.getURL('vendor/ffmpeg/ffmpeg-core.js'),wasmURL:chrome.runtime.getURL('vendor/ffmpeg/ffmpeg-core.wasm')},{signal});
+      // The bundled UMD wrapper uses importScripts() to load the core, so let
+      // it create a classic worker instead of forcing the module class worker.
+      await ffmpeg.load({coreURL:chrome.runtime.getURL('vendor/ffmpeg/ffmpeg-core.js'),wasmURL:chrome.runtime.getURL('vendor/ffmpeg/ffmpeg-core.wasm')},{signal});
       const clipInfo=[];
       for(let index=0;index<clips.length;index++){
         throwIfStopped();button.textContent=`Loading clips ${index+1}/${clips.length}…`;setRunStatus(`Loading timeline clip ${index+1}/${clips.length} into local FFmpeg…`,'warn');
