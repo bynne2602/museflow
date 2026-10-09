@@ -56,6 +56,15 @@
 
 Thay các file dự án bằng phiên bản mới, sau đó nhấn **Reload (Tải lại)** ở trang quản lý extension. Tải lại cả tab Muse.ai để cập nhật bridge của extension.
 
+## Mở MuseFlow và Muse.ai cạnh nhau
+
+Để dễ thao tác và theo dõi quá trình tạo nội dung, bạn có thể hiển thị canvas MuseFlow và khung chat Muse.ai cùng lúc:
+
+1. Mở trang chat Muse.ai trong một cửa sổ trình duyệt.
+2. Nhấn biểu tượng extension MuseFlow để mở canvas trong tab mới. Kéo tab MuseFlow ra khỏi thanh tab để tách thành cửa sổ riêng.
+3. Trên Windows, chọn cửa sổ MuseFlow rồi nhấn **Windows + phím mũi tên trái**. Chọn cửa sổ Muse.ai rồi nhấn **Windows + phím mũi tên phải**. Bạn cũng có thể kéo từng cửa sổ sát mép trái hoặc mép phải màn hình.
+4. Giữ cả hai trang mở khi tạo nội dung để theo dõi node đang chạy trong MuseFlow và phản hồi tạo nội dung trong Muse.ai.
+
 ### Bắt đầu nhanh
 
 1. Thêm node **Prompt** và nhập nội dung.

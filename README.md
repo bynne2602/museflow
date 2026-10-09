@@ -56,6 +56,15 @@
 
 Replace the project files with the updated version, then select **Reload** on the browser extensions page. Reload the Muse.ai tab as well so its extension bridge is refreshed.
 
+## View MuseFlow and Muse.ai side by side
+
+For a clearer view while you work, keep the Muse.ai chat and the MuseFlow canvas visible at the same time:
+
+1. Open the Muse.ai chat in one browser window.
+2. Click the MuseFlow extension icon to open its canvas in a tab. Move that tab into a separate window by dragging it out of the tab strip.
+3. In Windows, select the MuseFlow window and press **Windows key + Left Arrow**. Select the Muse.ai window and press **Windows key + Right Arrow**. You can also drag each window to the left or right edge of the screen.
+4. Keep both pages open during generation so you can follow the active workflow node in MuseFlow and the generation response in Muse.ai.
+
 ## Quick start
 
 1. Add a **Prompt** node and enter your prompt.
