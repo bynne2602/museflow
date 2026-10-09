@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+**Tải nhanh:** [Tải MuseFlow-extension.zip](https://github.com/bynne2602/museflow/releases/latest/download/MuseFlow-extension.zip) · Không cần cài npm hoặc build.
+
 **26Flow** là tiện ích mở rộng tạo quy trình trực quan bằng phiên Muse.ai bạn đã đăng nhập. Bạn có thể nối các node trên canvas, tạo ảnh/video và sắp xếp clip video trên timeline.
 
 ## Ảnh giao diện
@@ -45,12 +47,18 @@
 
 ### Cài đặt
 
-1. Tải hoặc clone repository này và giải nén vào một thư mục cố định.
+1. Tải [MuseFlow-extension.zip](https://github.com/bynne2602/museflow/releases/latest/download/MuseFlow-extension.zip) từ GitHub Releases rồi giải nén vào một thư mục cố định. Nếu chưa có gói phát hành, bạn có thể [tải ZIP repository](https://github.com/bynne2602/museflow/archive/refs/heads/main.zip).
 2. Mở trang quản lý extension của trình duyệt (Chrome: `chrome://extensions`).
 3. Bật **Developer mode (Chế độ nhà phát triển)**.
 4. Chọn **Load unpacked (Tải tiện ích đã giải nén)** và trỏ tới thư mục có file `manifest.json`.
 5. Mở Muse.ai, đăng nhập và vào trang chat.
 6. Mở **26Flow** và kiểm tra trạng thái phiên Muse.
+
+Không cần cài npm hoặc chạy bước build. ZIP tải về có mã nguồn extension và các file FFmpeg cục bộ đi kèm. Khi chọn **Load unpacked**, hãy chọn thư mục sau giải nén có chứa trực tiếp file `manifest.json`.
+
+### Tải gói ZIP cài sẵn
+
+Gói Release chỉ chứa các file cần để chạy extension và thông báo giấy phép liên quan. Cần giải nén trước, sau đó chọn thư mục chứa `manifest.json` bằng **Load unpacked**; không chọn trực tiếp file ZIP.
 
 #### Cập nhật
 
