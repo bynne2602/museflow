@@ -29,7 +29,7 @@
 ## Features
 
 - **Visual node canvas:** add, move, connect, multi-select, and arrange workflow nodes. Hold **Alt** while dragging to copy a node or selection with its incoming connections; press **Ctrl+Z** to undo the last canvas or workflow edit. Press **G** and drag on the canvas to draw a group region; press **T** to add a Text node. Group regions are saved with the workflow. Pan and zoom the canvas, and use the context menu for node actions.
-- **Prompt tools:** create prompts, negative prompts, append or merge text, and connect multiple prompt sources where supported.
+- **Prompt tools:** create prompts, negative prompts, append or merge text; Text Merge accepts multiple text sources on one input and joins them in connection order with a configurable separator.
 - **Image workflows:** provide image inputs and references, generate images, resize outputs, and preview connected media.
 - **Video workflows:** generate video clips, optionally use the preceding timeline clip's end frame as a continuity reference, and preview connected video.
 - **Timeline:** add and reorder clips, set clip durations, preview the sequence, export WebM, or assemble the full timeline as MP4 (H.264) with the bundled local FFmpeg engine. MP4 processing stays on your device.

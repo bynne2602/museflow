@@ -29,7 +29,7 @@
 ### Tính năng
 
 - **Canvas node:** thêm, di chuyển, nối, chọn nhiều và sắp xếp node. Giữ **Alt** khi kéo để sao chép node hoặc nhóm node cùng các kết nối đầu vào; nhấn **Ctrl+Z** để hoàn tác chỉnh sửa workflow gần nhất. Nhấn **G** rồi kéo trên canvas để tạo khung nhóm node; nhấn **T** để thêm Text node. Khung nhóm được lưu trong workflow. Có thể phóng to/thu nhỏ, kéo canvas và mở thao tác bằng menu chuột phải.
-- **Công cụ prompt:** tạo prompt, negative prompt, nối thêm hoặc gộp văn bản; hỗ trợ nối nhiều nguồn prompt ở các cổng phù hợp.
+- **Công cụ prompt:** tạo prompt, negative prompt, nối thêm hoặc gộp văn bản; Text Merge nhận nhiều nguồn text trên cùng một cổng và ghép theo thứ tự kết nối bằng dấu phân cách tùy chỉnh.
 - **Quy trình ảnh:** đưa ảnh vào, kết nối nhiều ảnh tham chiếu, tạo ảnh, đổi kích thước và xem trước kết quả.
 - **Quy trình video:** tạo clip, tùy chọn dùng frame cuối của clip trước làm ảnh tham chiếu mở đầu để giữ tính liên tục.
 - **Timeline:** thêm và sắp xếp clip, đặt thời lượng, xem trước chuỗi clip; xuất WebM hoặc ghép toàn bộ timeline thành MP4 (H.264) bằng FFmpeg được đóng gói trong extension. MP4 được xử lý ngay trên máy.
