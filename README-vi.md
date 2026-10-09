@@ -20,7 +20,9 @@
 
 ### Video demo
 
-[▶ Xem video demo 26Flow (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
+[![Xem MuseFlow: tạo ảnh, tạo video và ghép cảnh bằng Muse.ai](https://img.youtube.com/vi/w7mJwTJyzKw/maxresdefault.jpg)](https://www.youtube.com/watch?v=w7mJwTJyzKw)
+
+[▶ Xem trên YouTube](https://www.youtube.com/watch?v=w7mJwTJyzKw) · [Tải video demo MP4](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
 
 ### Tính năng
 

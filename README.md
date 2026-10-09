@@ -8,7 +8,9 @@
 
 ### Demo video
 
-[▶ Watch the 26Flow demo video (MP4)](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
+[![Watch MuseFlow: create images, generate videos, and assemble scenes with Muse.ai](https://img.youtube.com/vi/w7mJwTJyzKw/maxresdefault.jpg)](https://www.youtube.com/watch?v=w7mJwTJyzKw)
+
+[▶ Watch on YouTube](https://www.youtube.com/watch?v=w7mJwTJyzKw) · [Download the MP4 demo](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
 
 ### Workflow canvas and Muse.ai
 
