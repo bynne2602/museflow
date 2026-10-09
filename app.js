@@ -685,18 +685,9 @@
     if(action.startsWith('node-')){runNodeContextAction(action);return;}
     closeCanvasMenu();const pos=state.contextPoint;
     if(action.startsWith('add:')){addNode(action.slice(4),pos.x,pos.y);return;}
-    if(action==='save'){saveState();return;}if(action==='run'){execute();return;}if(action==='arrange'){arrangeNodes();return;}
+    if(action==='save'){saveState();return;}if(action==='run'){executeWorkflow();return;}if(action==='arrange'){arrangeNodes();return;}
     if(action==='delete-selected'){if(state.selectedNodeIds.length)removeSelectedNodes();else if(state.selectedNodeId)removeNode(state.selectedNodeId);else setRunStatus('Select one or more nodes first.','warn');return;}
     if(action==='disconnect-all'){state.edges=[];state.connectingFrom=null;render();setRunStatus('All connections removed.','ok');}
-  }
-
-  function runNodeContextAction(action){const menu=$('#canvasMenu'),node=nodeById(menu.dataset.nodeId);if(!node)return;closeCanvasMenu();
-    if(action==='node-run'){runSingleNode(node.id);return;}if(action==='node-preview'){playTimeline(node);return;}if(action==='node-delete'){removeNode(node.id);return;}
-    if(action==='node-disconnect'){state.edges=state.edges.filter(edge=>edge.source!==node.id&&edge.target!==node.id);render();setRunStatus('Node connections removed.','ok');return;}
-    const el=document.querySelector(`.node[data-id="${CSS.escape(node.id)}"]`);
-    if(action==='node-focus-text'){el?.querySelector('textarea')?.focus();return;}if(action==='node-choose-image'){el?.querySelector('input[type="file"]')?.click();return;}
-    if(action==='node-download-image'||action==='node-download-preview'){const url=node.data.asset?.url;if(url){const link=document.createElement('a');link.href=url;link.download=node.data.asset.name||'museflow-output';link.click();}else setRunStatus('This node has no output to download.','warn');return;}
-    if(action==='node-duplicate'){const copy=structuredClone(node);copy.id=uid(node.type);copy.x+=36;copy.y+=36;copy.data={...copy.data};state.nodes.push(copy);render();setRunStatus('Node duplicated.','ok');}
   }
 
   function getIncoming(nodeId, targetPort) { return state.edges.filter(e => e.target===nodeId && (!targetPort || e.targetPort===targetPort)); }
@@ -846,7 +837,7 @@
       node.data.status=node.data.asset?.url?'success':'idle';
       if(node.data.status==='idle')node.data.error='Previous run was interrupted; ready to retry.';
     }
-    const abortController=new AbortController();state.generationAbortController=abortController;state.activeGenerationId=targetId;state.isRunning=true;$('#runBtn').disabled=false;$('#runBtn').textContent='■ Stop';
+    const abortController=new AbortController();state.generationAbortController=abortController;state.activeGenerationId=targetId;state.isRunning=true;$('#runBtn').disabled=false;$('#runBtn').textContent='■ Stop workflow';$('#runBtn').title='Stop the running workflow and its remaining nodes';
     setRunStatus(targetId?'Running selected generation node…':'Running workflow...','warn');
     try{
       if(targetId)validateTargetPrompt(targetId);
@@ -919,11 +910,13 @@
       setRunStatus(/failed to fetch/i.test(message)?'Muse connection failed. Reload MuseFlow 0.5.0, then check the Muse session.':'MuseFlow 0.5.0 · '+message,'error');
       try{clearTimeout(autoSaveTimer);await queueWorkflowSave();}catch(saveError){setRunStatus(`${runStatus.textContent} · Auto-save failed: ${saveError?.message||String(saveError)}`,'error');}
     }
-    finally{state.isRunning=false;state.activeGenerationId=null;state.generationAbortController=null;state.generationRequestId=null;$('#runBtn').disabled=false;$('#runBtn').textContent='▶ Run';render();}
+    finally{state.isRunning=false;state.activeGenerationId=null;state.generationAbortController=null;state.generationRequestId=null;$('#runBtn').disabled=false;$('#runBtn').textContent='▶ Run workflow';$('#runBtn').title='Run every node in the workflow in dependency order';render();}
   }
 
-  function runSingleNode(nodeId){const node=nodeById(nodeId);if(!node||!['generateImage','generateVideo'].includes(node.type))return;if(node.data.status==='running'){stopGeneration(nodeId);return;}execute(nodeId);}
-  function onWorkflowRunButtonClick(event){if(event.detail>1)return;if(state.isRunning)stopGeneration(state.activeGenerationId);else execute();}
+  function executeWorkflow(){return execute();}
+  function executeGenerationNode(nodeId){const node=nodeById(nodeId);if(!node||!['generateImage','generateVideo'].includes(node.type))return;if(node.data.status==='running'){stopGeneration(nodeId);return;}return execute(nodeId);}
+  function runSingleNode(nodeId){return executeGenerationNode(nodeId);}
+  function onWorkflowRunButtonClick(event){if(event.detail>1)return;if(state.isRunning)stopGeneration(state.activeGenerationId);else executeWorkflow();}
 
   function setRunStatus(text, cls=''){runStatus.className=cls;runStatus.textContent=text;}
 
@@ -1035,8 +1028,7 @@
   $('#timelineAddVideoBtn').onclick=toggleTimelineOutputMenu;
   $('#timelinePlayBtn').onclick=()=>playTimeline(ensureDockTimeline());
   // A DOM click handler receives the MouseEvent as its first argument. Keep
-  // the workflow Run button separate from execute(targetNodeId), which accepts
-  // an optional node ID when invoked from a node's own Run button.
+  // Keep toolbar workflow execution separate from the per-node generation action.
   $('#runBtn').onclick=onWorkflowRunButtonClick; $('#saveBtn').onclick=saveState; $('#resetBtn').onclick=resetState;
   $('#workflowExportBtn').onclick=exportWorkflowFile;
   $('#workflowImportBtn').onclick=()=>$('#workflowFileInput').click();
