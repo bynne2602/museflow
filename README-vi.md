@@ -30,7 +30,7 @@
 - **Công cụ prompt:** tạo prompt, negative prompt, nối thêm hoặc gộp văn bản; hỗ trợ nối nhiều nguồn prompt ở các cổng phù hợp.
 - **Quy trình ảnh:** đưa ảnh vào, kết nối nhiều ảnh tham chiếu, tạo ảnh, đổi kích thước và xem trước kết quả.
 - **Quy trình video:** tạo clip, tùy chọn dùng frame cuối của clip trước làm ảnh tham chiếu mở đầu để giữ tính liên tục.
-- **Timeline:** thêm và sắp xếp clip, đặt thời lượng, xem trước chuỗi clip và xuất video đã ghép thành WebM hoặc MP4 (H.264) nếu trình duyệt hỗ trợ.
+- **Timeline:** thêm và sắp xếp clip, đặt thời lượng, xem trước chuỗi clip; xuất WebM hoặc ghép toàn bộ timeline thành MP4 (H.264) bằng FFmpeg được đóng gói trong extension. MP4 được xử lý ngay trên máy.
 - **Script → Nodes:** chuyển kịch bản chia cảnh thành các node ảnh/video đã nối và timeline theo thứ tự.
 - **Tệp workflow:** chọn **Save workflow** để tải workflow dạng JSON có thể dùng lại, rồi chọn **Import workflow** để mở lại. Media đầu vào và media đã tạo sẽ được nhúng nếu có thể; media từ xa không truy cập được sẽ giữ liên kết gốc.
 - **Tự lưu cục bộ:** nút **Save** và tự động lưu giữ workflow hiện tại trong bộ nhớ extension trên trình duyệt.
@@ -41,7 +41,7 @@
 - Đăng nhập Muse.ai và mở trang chat Muse.ai trong lúc tạo nội dung.
 - Tài khoản và giao diện Muse.ai cần hỗ trợ chức năng bạn muốn dùng. Tỷ lệ ảnh, âm thanh và khả năng tạo video phụ thuộc vào Muse.ai.
 
-26Flow kết nối Muse.ai thông qua page bridge của extension. Ứng dụng không dùng muse2api, backend tạo nội dung riêng, API key, Docker hay bước build bằng npm. Khi chạy workflow, prompt và ảnh tham chiếu đã chọn sẽ được gửi tới Muse.ai.
+26Flow kết nối Muse.ai thông qua page bridge của extension. Ứng dụng không dùng muse2api, backend tạo nội dung riêng, API key, Docker hay bước build bằng npm. Khi chạy workflow, prompt và ảnh tham chiếu đã chọn sẽ được gửi tới Muse.ai. Chức năng xuất MP4 dùng engine FFmpeg WebAssembly được đóng gói cùng extension và xử lý video cục bộ trên máy.
 
 ### Cài đặt
 
@@ -84,9 +84,9 @@ Workflow và media lưu cục bộ được giữ trong bộ nhớ extension tr�
 - **Không nhận phiên Muse:** đăng nhập Muse.ai, giữ trang chat đang mở, sau đó tải lại 26Flow và tab Muse.ai.
 - **Không bắt đầu tạo hoặc không thấy media:** kiểm tra trang và phiên Muse.ai rồi thử lại. Muse.ai có thể thay đổi giao diện hoặc luồng tạo nội dung, khi đó extension cần được cập nhật.
 - **Muse từ chối tạo cảnh:** 26Flow nhận diện lời từ chối, kể cả phản hồi tiếng Việt báo không tạo được hoặc đề nghị tạo bản tương đương, rồi tự thử lại cảnh đó một lần bằng prompt thay thế an toàn gần nhất. Không cần chờ xác nhận. Lần thử lại giữ vai trò của cảnh trong kịch bản và các thiết lập; Muse.ai vẫn quyết định nội dung có được tạo hay không.
-- **Không xuất được timeline:** dùng trình duyệt hỗ trợ `MediaRecorder` và canvas capture. MP4 (H.264) chỉ khả dụng khi trình duyệt có bộ mã hóa tương thích; WebM vẫn là lựa chọn tương thích hơn.
+- **Xuất timeline bị lỗi:** tải lại extension rồi thử lại. MP4 dùng engine FFmpeg đi kèm; WebM dùng `MediaRecorder` và canvas capture của trình duyệt.
 - **Kết quả không đúng thông số:** Muse.ai quyết định media đầu ra; dịch vụ có thể không luôn làm theo tỷ lệ ảnh, âm thanh hoặc tùy chọn video được yêu cầu.
 
 ### Giấy phép
 
-Phân phối theo [giấy phép MIT](LICENSE). Bản quyền (c) 2026 26Flow contributors.
+Mã nguồn gốc MuseFlow được ghi nhận theo [giấy phép MIT](LICENSE). Engine FFmpeg WebAssembly đi kèm theo GPL-2.0-or-later, nên khi phân phối toàn bộ extension cũng phải tuân thủ các yêu cầu của GPL. Xem [thông báo giấy phép bên thứ ba](THIRD_PARTY_NOTICES.md) và các tệp giấy phép đi kèm.

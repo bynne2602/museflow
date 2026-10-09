@@ -30,7 +30,7 @@
 - **Prompt tools:** create prompts, negative prompts, append or merge text, and connect multiple prompt sources where supported.
 - **Image workflows:** provide image inputs and references, generate images, resize outputs, and preview connected media.
 - **Video workflows:** generate video clips, optionally use the preceding timeline clip's end frame as a continuity reference, and preview connected video.
-- **Timeline:** add and reorder clips, set clip durations, preview the sequence, and export the stitched timeline as WebM or MP4 (H.264) when supported by the browser.
+- **Timeline:** add and reorder clips, set clip durations, preview the sequence, export WebM, or assemble the full timeline as MP4 (H.264) with the bundled local FFmpeg engine. MP4 processing stays on your device.
 - **Script to nodes:** turn a scene-based script into connected image/video nodes and an ordered timeline.
 - **Workflow files:** use **Save workflow** to download a reusable JSON file and **Import workflow** to restore it later. Generated and input media are embedded when available; inaccessible remote media remains linked to its original URL.
 - **Local workflow saving:** **Save** and autosave keep the current workflow in the extension's browser storage.
@@ -41,7 +41,7 @@
 - An active, signed-in Muse.ai session. Keep the Muse.ai chat page open while generating media.
 - Muse.ai account and page features that support the requested generation. Aspect ratio, audio, and video availability depend on Muse.ai.
 
-26Flow communicates with Muse.ai through the extension's page bridge. It does not use muse2api, a separate generation backend, API keys, Docker, or an npm build step. Prompts and selected reference images are submitted to Muse.ai when you run a generation.
+26Flow communicates with Muse.ai through the extension's page bridge. It does not use muse2api, a separate generation backend, API keys, Docker, or an npm build step. Prompts and selected reference images are submitted to Muse.ai when you run a generation. Timeline MP4 export uses the FFmpeg WebAssembly engine packaged with the extension and processes video locally.
 
 ## Install
 
@@ -84,9 +84,9 @@ Workflows and locally stored media are kept in browser extension storage on your
 - **Muse session is unavailable:** sign in to Muse.ai, keep its chat page open, then reload 26Flow and the Muse.ai tab.
 - **Generation does not start or media is missing:** check the Muse.ai page and session, then retry. Muse.ai may change its interface or generation behavior, which can require an extension update.
 - **Muse declines a scene:** 26Flow detects refusal messages, including Vietnamese replies that say a scene cannot be created or offer to make an equivalent, and retries that scene once with a close, safer alternative prompt. It does not wait for confirmation. The retry keeps the scene's narrative role and settings; Muse.ai still determines whether the result can be generated.
-- **Timeline export is unavailable:** use a browser that supports `MediaRecorder` and canvas capture. MP4 (H.264) is available only when the browser supports that encoder; WebM remains the compatible option.
+- **Timeline export fails:** reload the extension and try again. MP4 uses the bundled FFmpeg engine; WebM uses browser `MediaRecorder` and canvas capture.
 - **Output differs from requested settings:** Muse.ai controls the generated media; the requested aspect ratio, audio, and video options may not always be honored by the service.
 
 ## License
 
-Distributed under the [MIT License](LICENSE). Copyright (c) 2026 26Flow contributors.
+MuseFlow's original source code is marked under the [MIT License](LICENSE). The bundled FFmpeg WebAssembly engine is GPL-2.0-or-later, so redistribution of the complete extension must also meet the GPL requirements. See [third-party notices](THIRD_PARTY_NOTICES.md) and the included license texts.
