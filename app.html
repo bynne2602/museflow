@@ -104,11 +104,10 @@
 
   <div id="groupNameModal" class="modal-backdrop hidden">
     <section class="modal group-name-modal" role="dialog" aria-modal="true" aria-labelledby="groupNameTitle">
-      <h2 id="groupNameTitle">Name this group</h2>
-      <p id="groupNameDescription">Give this canvas region a name, or skip to use the default.</p>
-      <label for="groupNameInput">Group name<input id="groupNameInput" type="text" maxlength="80" autocomplete="off" placeholder="Group 1"></label>
+      <div class="group-name-heading"><span class="group-name-icon" aria-hidden="true">▱</span><div><h2 id="groupNameTitle">Name group</h2><p id="groupNameDescription">Skip to use the default name.</p></div></div>
+      <label class="group-name-field" for="groupNameInput"><span>Name</span><input id="groupNameInput" type="text" maxlength="80" autocomplete="off" placeholder="Group 1"></label>
       <div class="modal-actions">
-        <button id="skipGroupNameBtn" type="button">Skip · Group 1</button>
+        <button id="skipGroupNameBtn" type="button">Skip</button>
         <button id="confirmGroupNameBtn" type="button" class="primary">OK</button>
       </div>
     </section>
