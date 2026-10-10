@@ -102,6 +102,18 @@
     </section>
   </div>
 
+  <div id="groupNameModal" class="modal-backdrop hidden">
+    <section class="modal group-name-modal" role="dialog" aria-modal="true" aria-labelledby="groupNameTitle">
+      <h2 id="groupNameTitle">Name this group</h2>
+      <p id="groupNameDescription">Give this canvas region a name, or skip to use the default.</p>
+      <label for="groupNameInput">Group name<input id="groupNameInput" type="text" maxlength="80" autocomplete="off" placeholder="Group 1"></label>
+      <div class="modal-actions">
+        <button id="skipGroupNameBtn" type="button">Skip · Group 1</button>
+        <button id="confirmGroupNameBtn" type="button" class="primary">OK</button>
+      </div>
+    </section>
+  </div>
+
   <div id="donationModal" class="modal-backdrop hidden">
     <section class="modal donation-modal" role="dialog" aria-modal="true" aria-labelledby="donationModalTitle">
       <header class="donation-header"><div><h2 id="donationModalTitle">Buy me a coffee</h2><p>Ủng hộ MuseFlow qua VietQR</p></div><button id="closeDonationBtn" type="button" aria-label="Close">×</button></header>
