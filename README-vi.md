@@ -97,6 +97,16 @@ Workflow và media lưu cục bộ được giữ trong bộ nhớ extension tr�
 - **Xuất timeline bị lỗi:** tải lại extension rồi thử lại. MP4 dùng engine FFmpeg đi kèm; WebM dùng `MediaRecorder` và canvas capture của trình duyệt.
 - **Kết quả không đúng thông số:** Muse.ai quyết định media đầu ra; dịch vụ có thể không luôn làm theo tỷ lệ ảnh, âm thanh hoặc tùy chọn video được yêu cầu.
 
+### Lịch sử Star
+
+<a href="https://www.star-history.com/?repos=bynne2602%2Fmuseflow&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=bynne2602/museflow&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=bynne2602/museflow&type=date&legend=top-left" />
+   <img alt="Biểu đồ lịch sử Star" src="https://api.star-history.com/chart?repos=bynne2602/museflow&type=date&legend=top-left" />
+ </picture>
+</a>
+
 ### Giấy phép
 
 MuseFlow được cấp phép theo [Giấy phép Công cộng GNU phiên bản 2.0 trở lên (GPL-2.0-or-later)](LICENSE), cùng loại với FFmpeg core đi kèm. JavaScript wrapper của FFmpeg vẫn dùng MIT. Xem [thông báo giấy phép bên thứ ba](THIRD_PARTY_NOTICES.md) và các tệp giấy phép liên quan.

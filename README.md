@@ -97,6 +97,16 @@ Workflows and locally stored media are kept in browser extension storage on your
 - **Timeline export fails:** reload the extension and try again. MP4 uses the bundled FFmpeg engine; WebM uses browser `MediaRecorder` and canvas capture.
 - **Output differs from requested settings:** Muse.ai controls the generated media; the requested aspect ratio, audio, and video options may not always be honored by the service.
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=bynne2602%2Fmuseflow&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=bynne2602/museflow&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=bynne2602/museflow&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=bynne2602/museflow&type=date&legend=top-left" />
+ </picture>
+</a>
+
 ## License
 
 MuseFlow is licensed under the [GNU General Public License v2.0 or later (GPL-2.0-or-later)](LICENSE), matching the bundled FFmpeg core. The FFmpeg JavaScript wrapper remains MIT-licensed. See [third-party notices](THIRD_PARTY_NOTICES.md) and the included license texts.
