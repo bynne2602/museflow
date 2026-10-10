@@ -115,10 +115,11 @@
 
   <div id="groupNameModal" class="modal-backdrop hidden">
     <section class="modal group-name-modal" role="dialog" aria-modal="true" aria-labelledby="groupNameTitle">
-      <div class="group-name-heading"><span class="group-name-icon" aria-hidden="true">▱</span><div><h2 id="groupNameTitle">Name group</h2><p id="groupNameDescription">Skip to use the default name.</p></div></div>
-      <label class="group-name-field" for="groupNameInput"><span>Name</span><input id="groupNameInput" type="text" maxlength="80" autocomplete="off" placeholder="Group 1"></label>
+      <div class="group-name-heading"><span id="nameDialogIcon" class="group-name-icon" aria-hidden="true">▱</span><div><h2 id="groupNameTitle">Name group</h2><p id="groupNameDescription">Skip to use the default name.</p></div></div>
+      <label class="group-name-field" for="groupNameInput"><span id="nameDialogLabel">Name</span><input id="groupNameInput" type="text" maxlength="80" autocomplete="off" placeholder="Group 1"></label>
       <div class="modal-actions">
         <button id="skipGroupNameBtn" type="button">Skip</button>
+        <button id="cancelNodeRenameBtn" class="hidden" type="button">Cancel</button>
         <button id="confirmGroupNameBtn" type="button" class="primary">OK</button>
       </div>
     </section>
