@@ -1,0 +1,59 @@
+MUSEFLOW — MẪU KỊCH BẢN TẠO NODE
+Phiên bản mẫu: 1.0
+
+HƯỚNG DẪN DÀNH CHO AI — ĐỌC KỸ TRƯỚC KHI VIẾT
+Bạn phải điền kịch bản vào đúng biểu mẫu bên dưới. Biểu mẫu là cấu trúc dữ liệu đầu vào cho phần mềm, không phải gợi ý trình bày.
+
+QUY TẮC BẮT BUỘC:
+1. Chỉ xuất nội dung biểu mẫu đã điền. Không thêm lời mở đầu, kết luận, giải thích, bảng, Markdown fence hoặc ghi chú bên ngoài biểu mẫu.
+2. Giữ nguyên mọi tiêu đề, nhãn trường, dấu hai chấm, thứ tự các khối khóa và thứ tự trường trong từng cảnh. Không dịch, đổi tên, viết tắt, gộp, xóa hoặc di chuyển chúng.
+3. Chỉ thay phần nằm trong dấu <...>. Không sửa tên các trường hoặc dòng tiêu đề cảnh.
+4. Mỗi cảnh phải có đúng một dòng tiêu đề theo dạng: CẢNH N (HH:MM–HH:MM): Tên cảnh. Đánh số liên tục từ 1; thời gian liên tục, không chồng lấn, không bỏ trống. Mặc định mỗi cảnh dài 5 giây. Nếu người dùng yêu cầu thời lượng khác, chia cảnh thành các khoảng liên tục theo đúng thời lượng đó.
+5. Lặp lại nguyên khối CẢNH cho đến khi đủ thời lượng và số cảnh được yêu cầu. Không để nguyên cảnh mẫu dư và không tự ý thay đổi cấu trúc của khối.
+6. Mỗi cảnh phải có Prompt video cụ thể, có thể tạo được: nêu chủ thể, bối cảnh, bố cục máy quay, hành động theo thời gian, chuyển động và trạng thái cuối cảnh. Không viết kiểu “như trên”, “tiếp tục cảnh trước” hoặc yêu cầu AI tự đoán.
+7. Giữ nhất quán nhân vật, trang phục, đạo cụ và bố cục nền bằng các khối khóa dùng chung. Trong prompt từng cảnh, gọi đúng tên nhân vật/bối cảnh đã khai báo. Chỉ mô tả chi tiết thay đổi theo cảnh.
+8. Khung đầu và khung cuối phải mô tả hình ảnh tĩnh rõ ràng, dễ nhận biết. Diễn biến phải khớp thời lượng cảnh và kết thúc đúng khung cuối. Cảnh sau tiếp nối hợp lý từ cảnh trước.
+9. Voice chỉ chứa lời thuyết minh dự kiến đọc khi dựng. Prompt video không yêu cầu chữ, phụ đề, lời nói hay khẩu hình nếu người dùng không yêu cầu.
+10. Prompt ảnh khung đầu là tùy chọn: nếu không cần tạo ảnh đầu cảnh, để trống sau dấu hai chấm; không xóa dòng đó.
+11. Audio mô tả nhạc nền/âm thanh môi trường/hiệu ứng phù hợp. Nếu không cần, ghi “Không có nhạc; chỉ âm thanh môi trường tự nhiên.” Không để trống.
+12. Negative prompt phải nêu các lỗi cần tránh và không được mâu thuẫn với nội dung cảnh.
+13. Không tự bịa dữ kiện chuyên môn. Nếu kịch bản có thông tin sức khỏe, khoa học, lịch sử hoặc số liệu, giữ nguyên ý người dùng; đánh dấu [CẦN KIỂM CHỨNG] trong phần Voice nếu chưa chắc chắn.
+14. Trước khi trả lời, tự kiểm tra: số cảnh liên tục; mốc thời gian không hở/chồng; mọi cảnh có Prompt video, Audio và Negative prompt; các nhãn và thứ tự trường không đổi; mọi tham chiếu khóa đều có nội dung.
+
+YÊU CẦU CỦA NGƯỜI DÙNG:
+<Dán yêu cầu/kịch bản thô cần chuyển thành các cảnh vào đây. Nêu chủ đề, đối tượng, phong cách, thời lượng tổng, số giây mỗi cảnh, nhân vật, bối cảnh và điều bắt buộc phải giữ.>
+
+=== BẮT ĐẦU BIỂU MẪU — GIỮ NGUYÊN CẤU TRÚC TỪ ĐÂY ===
+
+[STYLE LOCK]:
+<Phong cách hình ảnh cố định: chất liệu, ánh sáng, màu sắc, tỷ lệ khung hình, chất lượng và quy tắc không đổi.>
+
+[CHAR LOCK]:
+<Mô tả đầy đủ từng nhân vật: tên định danh, ngoại hình, tỷ lệ cơ thể, màu sắc, trang phục, đặc điểm nhận diện. Mỗi nhân vật một dòng.>
+
+[SET LOCK]:
+<Mô tả đầy đủ từng bối cảnh: tên định danh, bố cục, vị trí trái/phải/trung tâm, đạo cụ cố định, hướng máy quay và những thứ tuyệt đối không được đổi. Mỗi bối cảnh một dòng.>
+
+[VIDEO SUFFIX]:
+<Các quy tắc hình ảnh/chuyển động phải được thêm cuối mọi prompt video, ví dụ phong cách hoạt hình, chuyển động mượt, không chữ, không phụ đề.>
+
+[NEGATIVE]:
+<Danh sách lỗi cần tránh dùng chung cho toàn bộ dự án.>
+
+CẢNH 1 (0:00–0:05): <Tên cảnh>
+Bối cảnh: <Tên bối cảnh và trạng thái cần có ở cảnh này.>
+Voice (tiếng Việt): <Lời thuyết minh ngắn gọn cho cảnh.>
+Khung đầu: <Mô tả chính xác hình ảnh ở thời điểm bắt đầu.>
+Khung cuối: <Mô tả chính xác hình ảnh ở thời điểm kết thúc và điểm cần nối sang cảnh sau.>
+Diễn biến: <Mô tả hành động theo mốc thời gian, ví dụ 0–2s và 2–5s. Một hành động chính mỗi nhịp.>
+Prompt ảnh khung đầu:
+Prompt video: <Prompt hoàn chỉnh, tự đủ nghĩa; có thể dùng tên các khóa STYLE LOCK, CHAR LOCK, SET LOCK, VIDEO SUFFIX đã khai báo ở trên.>
+Audio: <Nhạc nền, âm thanh môi trường và hiệu ứng âm thanh đồng bộ với hành động.>
+Negative prompt: <Lỗi riêng của cảnh cần tránh; nếu không có thì ghi “Không có bổ sung.”>
+
+=== KẾT THÚC BIỂU MẪU — KHI THÊM CẢNH, SAO CHÉP NGUYÊN KHỐI CẢNH Ở TRÊN ===
+
+GHI CHÚ SỬ DỤNG:
+- Điền phần YÊU CẦU CỦA NGƯỜI DÙNG rồi gửi toàn bộ tệp cho AI để AI viết theo mẫu; yêu cầu AI chỉ trả về biểu mẫu đã hoàn chỉnh.
+- Hoặc tự điền biểu mẫu. Sau khi hoàn tất, dán nội dung từ các khối khóa đến hết cảnh vào MuseFlow Script → Nodes.
+- Không xóa nhãn trường dù trường tùy chọn để trống. MuseFlow nhận diện cảnh theo dòng CẢNH N (thời gian): Tên và nhận diện nội dung theo đúng nhãn trường.

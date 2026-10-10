@@ -9,21 +9,10 @@
 </head>
 <body>
   <header class="toolbar">
-    <div class="brand"><img class="brand-logo" src="icons/26flow.svg" alt="26Flow" /><strong class="brand-name">Flow</strong><span class="brand-version">0.5.1</span></div>
+    <div class="brand"><img class="brand-logo" src="icons/26flow.svg" alt="26Flow" /><strong class="brand-name">Flow</strong><span class="brand-version">0.5.2</span></div>
     <div class="toolbar-tools" aria-label="Add workflow nodes">
       <button id="scriptImportBtn" type="button">＋ Script → Nodes</button>
-      <button data-add="prompt">+ Prompt</button>
-      <button data-add="text">+ Text note</button>
-      <button data-add="negativePrompt">+ Negative</button>
-      <button data-add="textAppend">+ Text Append</button>
-      <button data-add="textConcat">+ Text Merge</button>
-      <button data-add="imageInput">+ Image Input</button>
-      <button data-add="references">+ References</button>
-      <button data-add="generateImage">+ Generate Image</button>
-      <button data-add="generateVideo">+ Generate Video</button>
-      <button data-add="timeline">+ Timeline</button>
-      <button data-add="imageResize">+ Image Resize</button>
-      <button data-add="preview">+ Preview</button>
+      <button id="addNodeMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">＋ Add node</button>
     </div>
     <div class="toolbar-actions">
       <button id="saveBtn">Save</button>
@@ -36,6 +25,27 @@
       <button id="buyCoffeeBtn" class="buy-coffee-btn" type="button" title="Support MuseFlow via VietQR">☕ Buy me a coffee</button>
     </div>
   </header>
+
+  <div id="addNodeMenu" class="add-node-menu hidden" role="menu" aria-label="Add node">
+    <div class="add-node-group"><span>Text</span>
+      <button type="button" role="menuitem" data-add="prompt">Prompt</button>
+      <button type="button" role="menuitem" data-add="negativePrompt">Negative prompt</button>
+      <button type="button" role="menuitem" data-add="textAppend">Text append</button>
+      <button type="button" role="menuitem" data-add="textConcat">Text merge</button>
+      <button type="button" role="menuitem" data-add="text">Text note</button>
+    </div>
+    <div class="add-node-group"><span>Images</span>
+      <button type="button" role="menuitem" data-add="imageInput">Image input</button>
+      <button type="button" role="menuitem" data-add="references">References</button>
+      <button type="button" role="menuitem" data-add="generateImage">Generate image</button>
+      <button type="button" role="menuitem" data-add="imageResize">Image resize</button>
+      <button type="button" role="menuitem" data-add="preview">Preview</button>
+    </div>
+    <div class="add-node-group"><span>Video and timeline</span>
+      <button type="button" role="menuitem" data-add="generateVideo">Generate video</button>
+      <button type="button" role="menuitem" data-add="timeline">Timeline</button>
+    </div>
+  </div>
 
   <div class="statusbar">
     <span id="museStatus">● Checking muse.ai...</span>
@@ -129,13 +139,35 @@
     <section class="modal script-modal" role="dialog" aria-modal="true" aria-labelledby="scriptModalTitle">
       <h2 id="scriptModalTitle">Build nodes from a scene script</h2>
       <p>Paste a scene script using the Grumbo &amp; Snowy form. MuseFlow reads each scene’s opening/ending frames, timed actions, image/video prompts, audio, shared locks and negative prompt, then connects the scene nodes and orders videos on the Timeline.</p>
+      <p class="script-template-hint">Download the strict template to fill in yourself or give to an AI. Keep the headings and field order unchanged.</p>
       <label for="scriptInput">Script</label>
       <textarea id="scriptInput" placeholder="CẢNH 1 (0:00 đến 0:10): Scene title&#10;Khung đầu: ...&#10;Khung cuối: ...&#10;Diễn biến: 1. 0-2s: ...&#10;Prompt ảnh khung đầu: ...&#10;Prompt video: ...&#10;Audio: ..."></textarea>
       <div id="scriptImportStatus" role="status"></div>
       <div class="modal-actions">
+        <a id="downloadScriptTemplate" class="script-template-download" href="templates/museflow-scene-script-template-vi.txt" download="MuseFlow_Scene_Script_Template_VI.txt">⇩ Download strict template</a>
         <button id="cancelScriptImport" type="button">Cancel</button>
         <button id="buildScriptNodes" type="button" class="primary">Create scene nodes</button>
       </div>
+    </section>
+  </div>
+
+  <div id="runOrderModal" class="modal-backdrop hidden">
+    <section class="modal run-order-modal" role="dialog" aria-modal="true" aria-labelledby="runOrderTitle">
+      <header class="run-order-header">
+        <div class="run-order-heading-icon" aria-hidden="true">⇅</div>
+        <div class="run-order-heading-copy"><h2 id="runOrderTitle">Xác nhận thứ tự chạy</h2><p id="runOrderSubtitle">Các node tạo sẽ chạy theo thứ tự bên dưới.</p></div>
+        <button id="closeRunOrderBtn" class="run-order-close" type="button" aria-label="Đóng">×</button>
+      </header>
+      <div id="runOrderList" class="run-order-list" aria-label="Thứ tự node tạo"></div>
+      <div id="runOrderWarning" class="run-order-warning hidden" role="alert"></div>
+      <footer class="run-order-footer">
+        <p><span aria-hidden="true">ⓘ</span> Tick node muốn chạy; bỏ tick để bỏ qua. Node đang được chọn áp dụng khi chạy workflow.</p>
+        <div class="run-order-actions">
+          <button id="cancelRunOrderBtn" type="button">Hủy</button>
+          <button id="resetRunOrderBtn" type="button">Đặt lại theo thứ tự tạo</button>
+          <button id="confirmRunOrderBtn" class="primary" type="button">▶ Chạy node</button>
+        </div>
+      </footer>
     </section>
   </div>
 

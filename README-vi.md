@@ -33,7 +33,8 @@
 - **Quy trình ảnh:** đưa ảnh vào, kết nối nhiều ảnh tham chiếu, tạo ảnh, đổi kích thước và xem trước kết quả.
 - **Quy trình video:** tạo clip, tùy chọn dùng frame cuối của clip trước làm ảnh tham chiếu mở đầu để giữ tính liên tục.
 - **Timeline:** thêm và sắp xếp clip, đặt thời lượng, xem trước chuỗi clip; xuất WebM hoặc ghép toàn bộ timeline thành MP4 (H.264) bằng FFmpeg được đóng gói trong extension. MP4 được xử lý ngay trên máy.
-- **Script → Nodes:** chuyển kịch bản chia cảnh thành các node ảnh/video đã nối và timeline theo thứ tự.
+- **Script → Nodes:** chuyển kịch bản chia cảnh thành các node ảnh/video đã nối và timeline theo thứ tự. Có thể tải mẫu điền tay hoặc gửi AI viết ngay trong cửa sổ nhập kịch bản; mẫu quy định chặt tiêu đề, tên trường và bố cục cảnh. Công cụ nhận cả tiêu đề `CẢNH 1 (...)` và `Scene 1 (...)`, đồng thời tự bung các khóa prompt dùng chung.
+- **Chọn node khi chạy workflow:** xem lại thứ tự, kéo để sắp xếp, rồi tick riêng các node ảnh/video cần chạy. MuseFlow cảnh báo nếu node được chọn cần kết quả nguồn chưa có.
 - **Tệp workflow:** chọn **Save workflow** để tải workflow dạng JSON có thể dùng lại, rồi chọn **Import workflow** để mở lại. Media đầu vào và media đã tạo sẽ được nhúng nếu có thể; media từ xa không truy cập được sẽ giữ liên kết gốc.
 - **Tự lưu cục bộ:** nút **Save** và tự động lưu giữ workflow hiện tại trong bộ nhớ extension trên trình duyệt.
 
@@ -83,7 +84,7 @@ Các bản cũ hơn 0.5.1 chưa có bộ kiểm tra cập nhật. Người dùng
 4. Chọn thông số và nhấn **Run Image** hoặc **Run Video** trên node, hoặc chạy toàn workflow từ thanh công cụ.
 5. Nối kết quả tới node **Preview**. Với video, thêm các clip vào **Timeline**, sắp xếp thứ tự rồi xem trước hoặc xuất video.
 
-Để tạo node từ kịch bản, chọn **Script → Nodes** rồi dán kịch bản theo khung Grumbo & Snowy. Công cụ nhận tiêu đề `CẢNH 1 (0:00 đến 0:10): Tên cảnh`, khung đầu/cuối, diễn biến theo mốc giây, prompt ảnh khung đầu, prompt video và audio. Các khóa dùng chung như **CHAR LOCK**, **STYLE LOCK**, **SET LOCK**, **VIDEO SUFFIX** và **NEGATIVE** được đưa vào prompt hoặc nối thành node Negative Prompt tương ứng. Mỗi cảnh được tạo thành các node ảnh/video đã nối; video được xếp theo thứ tự cảnh trên Timeline và bật continuity cho các cảnh tiếp theo.
+Để tạo node từ kịch bản, chọn **Script → Nodes**, tải mẫu chuẩn rồi tự điền hoặc gửi mẫu cho AI kèm yêu cầu câu chuyện. Giữ nguyên tiêu đề và thứ tự trường của biểu mẫu. MuseFlow nhận cả tiêu đề `CẢNH 1 (0:00–0:05): Tên cảnh` và `Scene 1 (0:00–0:05): Tên cảnh`, khung đầu/cuối, diễn biến theo mốc giây, prompt ảnh khung đầu, prompt video và audio. Các khóa prompt dùng chung được bung vào nội dung từng cảnh. Mỗi cảnh được tạo thành các node ảnh/video đã nối; video được xếp theo thứ tự cảnh trên Timeline và bật continuity cho các cảnh tiếp theo.
 
 ### Dữ liệu và quyền truy cập
 

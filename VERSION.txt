@@ -1,3 +1,3 @@
-MuseFlow 0.5.1
+MuseFlow 0.5.2
 Build type: Chrome Extension Manifest V3, zero dependency
 Integration: signed-in Muse.ai tab; no local backend

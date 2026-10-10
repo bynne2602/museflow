@@ -33,7 +33,8 @@
 - **Image workflows:** provide image inputs and references, generate images, resize outputs, and preview connected media.
 - **Video workflows:** generate video clips, optionally use the preceding timeline clip's end frame as a continuity reference, and preview connected video.
 - **Timeline:** add and reorder clips, set clip durations, preview the sequence, export WebM, or assemble the full timeline as MP4 (H.264) with the bundled local FFmpeg engine. MP4 processing stays on your device.
-- **Script to nodes:** turn a scene-based script into connected image/video nodes and an ordered timeline.
+- **Script to nodes:** turn a scene-based script into connected image/video nodes and an ordered timeline. Download the strict fill-in/AI template from the script importer; it preserves the required headings, field names, and scene layout. The parser accepts both `CẢNH 1 (...)` and `Scene 1 (...)` headings and expands shared prompt locks.
+- **Selective workflow runs:** review generation order, drag to reorder, and check only the image/video nodes you want to run. MuseFlow warns when a selected node needs a source output that is not available.
 - **Workflow files:** use **Save workflow** to download a reusable JSON file and **Import workflow** to restore it later. Generated and input media are embedded when available; inaccessible remote media remains linked to its original URL.
 - **Local workflow saving:** **Save** and autosave keep the current workflow in the extension's browser storage.
 
@@ -83,7 +84,7 @@ For a clearer view while you work, keep the Muse.ai chat and the MuseFlow canvas
 4. Choose the output settings and click **Run Image** or **Run Video** on that node, or run the workflow from the toolbar.
 5. Connect generated media to a **Preview** node. For video, add clips to the **Timeline**, arrange their order, and preview or export the sequence.
 
-To build a workflow from a script, choose **Script → Nodes** and paste a script using the Grumbo & Snowy structure. It recognizes headings such as `CẢNH 1 (0:00 đến 0:10): Scene title`, opening and ending frames, timed action beats, opening image prompts, video prompts, and audio directions. Shared **CHAR LOCK**, **STYLE LOCK**, **SET LOCK**, **VIDEO SUFFIX**, and **NEGATIVE** blocks are applied to prompts or connected as Negative Prompt nodes. Each scene becomes connected image/video nodes; video clips are ordered on the Timeline and continuity is enabled for following scenes.
+To build a workflow from a script, choose **Script → Nodes**, download the strict template, then fill it in yourself or give it to an AI with your story brief. Keep the headings and field order unchanged. MuseFlow recognizes both `CẢNH 1 (0:00–0:05): Title` and `Scene 1 (0:00–0:05): Title`, opening and ending frames, timed action beats, opening image prompts, video prompts, and audio directions. Shared prompt locks are expanded into the scene prompts. Each scene becomes connected image/video nodes; video clips are ordered on the Timeline and continuity is enabled for following scenes.
 
 ## Data and permissions
 
