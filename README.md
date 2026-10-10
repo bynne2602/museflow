@@ -83,7 +83,7 @@ For a clearer view while you work, keep the Muse.ai chat and the MuseFlow canvas
 4. Choose the output settings and click **Run Image** or **Run Video** on that node, or run the workflow from the toolbar.
 5. Connect generated media to a **Preview** node. For video, add clips to the **Timeline**, arrange their order, and preview or export the sequence.
 
-For a scene script, use **Script → Nodes**, paste the script, and create the workflow. Scene headings should use a format such as `CẢNH 1 (0:00–0:07): Scene title`, with fields such as `Prompt ảnh`, `Prompt video`, and optional `Audio`.
+To build a workflow from a script, choose **Script → Nodes** and paste a script using the Grumbo & Snowy structure. It recognizes headings such as `CẢNH 1 (0:00 đến 0:10): Scene title`, opening and ending frames, timed action beats, opening image prompts, video prompts, and audio directions. Shared **CHAR LOCK**, **STYLE LOCK**, **SET LOCK**, **VIDEO SUFFIX**, and **NEGATIVE** blocks are applied to prompts or connected as Negative Prompt nodes. Each scene becomes connected image/video nodes; video clips are ordered on the Timeline and continuity is enabled for following scenes.
 
 ## Data and permissions
 

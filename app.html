@@ -128,9 +128,9 @@
   <div id="scriptModal" class="modal-backdrop hidden">
     <section class="modal script-modal" role="dialog" aria-modal="true" aria-labelledby="scriptModalTitle">
       <h2 id="scriptModalTitle">Build nodes from a scene script</h2>
-      <p>Paste scenes with “CẢNH”, “Prompt ảnh”, “Prompt video” and optional “Audio”. MuseFlow will create and connect each scene, then order video clips on the Timeline.</p>
+      <p>Paste a scene script using the Grumbo &amp; Snowy form. MuseFlow reads each scene’s opening/ending frames, timed actions, image/video prompts, audio, shared locks and negative prompt, then connects the scene nodes and orders videos on the Timeline.</p>
       <label for="scriptInput">Script</label>
-      <textarea id="scriptInput" placeholder="CẢNH 1 (0:00–0:07): Scene title&#10;&#10;Prompt ảnh: ...&#10;&#10;Prompt video: ...&#10;Audio: ..."></textarea>
+      <textarea id="scriptInput" placeholder="CẢNH 1 (0:00 đến 0:10): Scene title&#10;Khung đầu: ...&#10;Khung cuối: ...&#10;Diễn biến: 1. 0-2s: ...&#10;Prompt ảnh khung đầu: ...&#10;Prompt video: ...&#10;Audio: ..."></textarea>
       <div id="scriptImportStatus" role="status"></div>
       <div class="modal-actions">
         <button id="cancelScriptImport" type="button">Cancel</button>

@@ -83,7 +83,7 @@ Các bản cũ hơn 0.5.1 chưa có bộ kiểm tra cập nhật. Người dùng
 4. Chọn thông số và nhấn **Run Image** hoặc **Run Video** trên node, hoặc chạy toàn workflow từ thanh công cụ.
 5. Nối kết quả tới node **Preview**. Với video, thêm các clip vào **Timeline**, sắp xếp thứ tự rồi xem trước hoặc xuất video.
 
-Để tạo node từ kịch bản, chọn **Script → Nodes**, dán nội dung và tạo workflow. Tiêu đề cảnh có thể theo dạng `CẢNH 1 (0:00–0:07): Tên cảnh`, cùng các trường `Prompt ảnh`, `Prompt video` và `Audio` nếu có.
+Để tạo node từ kịch bản, chọn **Script → Nodes** rồi dán kịch bản theo khung Grumbo & Snowy. Công cụ nhận tiêu đề `CẢNH 1 (0:00 đến 0:10): Tên cảnh`, khung đầu/cuối, diễn biến theo mốc giây, prompt ảnh khung đầu, prompt video và audio. Các khóa dùng chung như **CHAR LOCK**, **STYLE LOCK**, **SET LOCK**, **VIDEO SUFFIX** và **NEGATIVE** được đưa vào prompt hoặc nối thành node Negative Prompt tương ứng. Mỗi cảnh được tạo thành các node ảnh/video đã nối; video được xếp theo thứ tự cảnh trên Timeline và bật continuity cho các cảnh tiếp theo.
 
 ### Dữ liệu và quyền truy cập
 

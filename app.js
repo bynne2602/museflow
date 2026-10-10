@@ -244,18 +244,44 @@
   }
 
   function scriptField(section,label,nextLabels){
-    const startPattern=new RegExp(`^\\s*${label}\\s*:\\s*`,'im'),match=startPattern.exec(section);if(!match)return'';
-    const start=match.index+match[0].length,tail=section.slice(start),stop=nextLabels.length?new RegExp(`^\\s*(?:${nextLabels.join('|')})\\s*:`,'im').exec(tail):null;
+    const startPattern=new RegExp(`^\\s*(?:[A-E]\\)\\s*)?(?:\\[)?${label}(?:\\])?\\s*:\\s*`,'im'),match=startPattern.exec(section);if(!match)return'';
+    const start=match.index+match[0].length,tail=section.slice(start),stop=nextLabels.length?new RegExp(`^\\s*(?:[A-E]\\)\\s*)?(?:\\[)?(?:${nextLabels.join('|')})(?:\\])?\\s*:`,'im').exec(tail):null;
     return tail.slice(0,stop?stop.index:tail.length).trim();
   }
+  function expandScriptLocks(text,locks){return String(text||'').replace(/\[(CHAR(?:ACTER)? LOCK|STYLE LOCK|SET LOCK|VIDEO SUFFIX|NEGATIVE)\]/gi,(token,key)=>locks[key.toLowerCase()]||token);}
+  function withPromptContext(prompt,context,before=true){const value=String(prompt||'').trim(),parts=context.filter(Boolean).filter(part=>!value.includes(part));return before?[...parts,value].filter(Boolean).join('\n\n'):[value,...parts].filter(Boolean).join('\n\n');}
   function parseSceneScript(text){
-    const heading=/^\s*CẢNH\s+(\d+)\s*\(([^)]*)\)\s*:\s*(.*?)\s*$/gim,matches=[...text.matchAll(heading)];
+    const heading=/^\s*CẢNH\s+(\d+)\s*\(([^)]*)\)\s*:\s*(.*?)\s*$/gim,matches=[...text.matchAll(heading)];if(!matches.length)return[];
+    const preamble=text.slice(0,matches[0].index),locks={
+      'char lock':scriptField(preamble,'(?:CHAR(?:ACTER)?\\s*LOCK|NHÂN VẬT(?:\\s+THAM GIA)?|CHARACTER_[A-Z0-9_]+)',['STYLE\\s*LOCK','PHONG CÁCH VÀ KỸ THUẬT','SET\\s*LOCK','VIDEO\\s*SUFFIX','NEGATIVE','C\\)']),
+      'style lock':scriptField(preamble,'(?:STYLE\\s*LOCK|PHONG CÁCH VÀ KỸ THUẬT)',['SET\\s*LOCK','VIDEO\\s*SUFFIX','NEGATIVE','C\\)']),
+      'set lock':scriptField(preamble,'(?:SET\\s*LOCK|BỐI CẢNH\\s*LOCK)',['VIDEO\\s*SUFFIX','NEGATIVE','C\\)']),
+      'video suffix':scriptField(preamble,'VIDEO\\s*SUFFIX',['NEGATIVE','C\\)']),
+      negative:scriptField(preamble,'(?:NEGATIVE(?:\\s+PROMPT)?|PROMPT\\s+ÂM)',['SET\\s*LOCK','VIDEO\\s*SUFFIX','C\\)'])
+    };
+    for(const key of Object.keys(locks))if(/^\[[^\]]+\]$/.test(locks[key]))locks[key]='';
     return matches.map((match,index)=>{
-      const body=text.slice(match.index+match[0].length,matches[index+1]?.index??text.length),imagePrompt=scriptField(body,'Prompt\\s+ảnh',['Prompt\\s+video','Audio']),videoPrompt=scriptField(body,'Prompt\\s+video',['Audio']),audio=scriptField(body,'Audio',[]),range=match[2].match(/(\d+):(\d{2})\s*[–—-]\s*(\d+):(\d{2})/);
+      const body=text.slice(match.index+match[0].length,matches[index+1]?.index??text.length),fieldStops=['Khung\\s+đầu','Khung\\s+cuối','Diễn\\s+biến','Prompt\\s+ảnh','Prompt\\s+video','Audio','Negative(?:\\s+prompt)?','Checklist','Tự\\s+kiểm\\s+tra','[A-E]\\)'];
+      const opening=scriptField(body,'Khung\\s+đầu',fieldStops.filter(label=>label!=='Khung\\s+đầu')),
+        ending=scriptField(body,'Khung\\s+cuối',fieldStops.filter(label=>label!=='Khung\\s+cuối')),
+        beats=scriptField(body,'Diễn\\s+biến',fieldStops.filter(label=>label!=='Diễn\\s+biến')),
+        rawImage=scriptField(body,'Prompt\\s+ảnh(?:\\s+khung\\s+đầu)?',['Khung\\s+cuối','Diễn\\s+biến','Prompt\\s+video','Audio','Negative(?:\\s+prompt)?','Checklist','[A-E]\\)']),
+        rawVideo=scriptField(body,'Prompt\\s+video',['Audio','Negative(?:\\s+prompt)?','Checklist','[A-E]\\)']),
+        audio=scriptField(body,'Audio',['Negative(?:\\s+prompt)?','Checklist','[A-E]\\)']),
+        sceneNegative=scriptField(body,'(?:Negative(?:\\s+prompt)?|Prompt\\s+âm)',['Checklist','[A-E]\\)']),
+        range=match[2].match(/(\d+):(\d{2})\s*(?:đến|to|[–—-])\s*(\d+):(\d{2})/i);
       const seconds=range?(Number(range[3])*60+Number(range[4]))-(Number(range[1])*60+Number(range[2])):0;
-      const ratio=(imagePrompt+' '+videoPrompt).match(/\b(9:16|16:9|1:1|4:3|3:4)\b/);
-      return{number:Number(match[1]),title:match[3].trim(),imagePrompt,videoPrompt:[videoPrompt,audio?`Audio direction: ${audio}`:''].filter(Boolean).join('\n\n'),seconds:seconds>0?seconds:6,size:ratio?.[1]||'9:16'};
-    }).filter(scene=>scene.imagePrompt||scene.videoPrompt);
+      let imagePrompt=expandScriptLocks(rawImage,locks),videoPrompt=expandScriptLocks(rawVideo,locks);
+      if(rawImage)imagePrompt=withPromptContext(imagePrompt,[locks['char lock'],locks['style lock']]);
+      const videoContext=[locks['set lock'],locks['char lock'],locks['style lock']];
+      if(rawVideo)videoPrompt=withPromptContext(videoPrompt,videoContext);
+      if(opening&&!imagePrompt.toLowerCase().includes(opening.toLowerCase()))imagePrompt=`${imagePrompt}\n\nOpening frame composition: ${opening}`.trim();
+      const videoDetails=[beats?`Timed action beats:\n${beats}`:'',ending?`Final frame to reach: ${ending}`:'',audio?`Audio direction: ${audio}. No speech.`:''];
+      if(rawVideo)videoPrompt=[videoPrompt,...videoDetails].filter(Boolean).join('\n\n');
+      if(locks['video suffix']&&!videoPrompt.includes(locks['video suffix']))videoPrompt=`${videoPrompt}\n\n${locks['video suffix']}`.trim();
+      const negative=expandScriptLocks(sceneNegative||locks.negative,locks),ratio=(imagePrompt+' '+videoPrompt+' '+preamble).match(/\b(9:16|16:9|1:1|4:3|3:4)\b/);
+      return{number:Number(match[1]),title:match[3].trim(),imagePrompt,videoPrompt,hasImagePrompt:Boolean(rawImage),hasVideoPrompt:Boolean(rawVideo),negative,seconds:seconds>0?seconds:6,size:ratio?.[1]||'9:16'};
+    }).filter(scene=>scene.hasImagePrompt||scene.hasVideoPrompt);
   }
   function buildSceneNodesFromScript(){
     const status=$('#scriptImportStatus'),scenes=parseSceneScript($('#scriptInput').value);
@@ -264,8 +290,9 @@
     scenes.forEach((scene,index)=>{
       const column=index%4,row=Math.floor(index/4),x=80+column*650,y=baseY+row*1100,label=`Scene ${scene.number}${scene.title?`: ${scene.title}`:''}`;
       let imageNode=null,videoNode=null;
-      if(scene.imagePrompt){const prompt=makeNode('prompt',x,y);prompt.data={text:scene.imagePrompt,sceneLabel:label};const image=makeNode('generateImage',x+330,y);image.data={model:'muse-image',size:scene.size,status:'idle',sceneLabel:label};state.nodes.push(prompt,image);state.edges.push({id:uid('edge'),source:prompt.id,sourcePort:'text',target:image.id,targetPort:'prompt'});imageNode=image;made+=2;}
-      if(scene.videoPrompt){const prompt=makeNode('prompt',x,y+540);prompt.data={text:scene.videoPrompt,sceneLabel:label};const requestedDuration=[5,6,8,10].reduce((best,value)=>Math.abs(value-scene.seconds)<Math.abs(best-scene.seconds)?value:best,5);videoNode=makeNode('generateVideo',x+330,y+540);videoNode.data={model:'muse-video',size:scene.size,duration:requestedDuration,continuity:createdVideos.length>0,status:'idle',sceneLabel:label};state.nodes.push(prompt,videoNode);state.edges.push({id:uid('edge'),source:prompt.id,sourcePort:'text',target:videoNode.id,targetPort:'prompt'});if(imageNode)state.edges.push({id:uid('edge'),source:imageNode.id,sourcePort:'image',target:videoNode.id,targetPort:'reference'});made+=2;createdVideos.push({node:videoNode,seconds:scene.seconds});}
+      if(scene.hasImagePrompt){const prompt=makeNode('prompt',x,y);prompt.data={text:scene.imagePrompt,sceneLabel:label};const image=makeNode('generateImage',x+330,y);image.data={model:'muse-image',size:scene.size,status:'idle',sceneLabel:label};state.nodes.push(prompt,image);state.edges.push({id:uid('edge'),source:prompt.id,sourcePort:'text',target:image.id,targetPort:'prompt'});imageNode=image;made+=2;}
+      if(scene.hasVideoPrompt){const prompt=makeNode('prompt',x,y+540);prompt.data={text:scene.videoPrompt,sceneLabel:label};const requestedDuration=[5,6,8,10].reduce((best,value)=>Math.abs(value-scene.seconds)<Math.abs(best-scene.seconds)?value:best,5);videoNode=makeNode('generateVideo',x+330,y+540);videoNode.data={model:'muse-video',size:scene.size,duration:requestedDuration,continuity:createdVideos.length>0,status:'idle',sceneLabel:label};state.nodes.push(prompt,videoNode);state.edges.push({id:uid('edge'),source:prompt.id,sourcePort:'text',target:videoNode.id,targetPort:'prompt'});if(imageNode)state.edges.push({id:uid('edge'),source:imageNode.id,sourcePort:'image',target:videoNode.id,targetPort:'reference'});made+=2;createdVideos.push({node:videoNode,seconds:requestedDuration});}
+      if(scene.negative){const negative=makeNode('negativePrompt',x,y+270);negative.data={text:scene.negative,sceneLabel:label};state.nodes.push(negative);if(imageNode)state.edges.push({id:uid('edge'),source:negative.id,sourcePort:'text',target:imageNode.id,targetPort:'negative'});if(videoNode)state.edges.push({id:uid('edge'),source:negative.id,sourcePort:'text',target:videoNode.id,targetPort:'negative'});made++;}
     });
     let references=state.nodes.find(node=>node.type==='references');if(!references){const minX=Math.min(80,...state.nodes.filter(node=>!node.data?.dockOnly).map(node=>node.x));references=makeNode('references',minX-360,baseY);references.data={};state.nodes.push(references);made++;}syncReferenceFanOut(references);
     const timeline=ensureDockTimeline();timeline.data.clipOrder=createdVideos.map(item=>item.node.id);timeline.data.durations=timeline.data.durations||{};createdVideos.forEach(({node,seconds})=>{timeline.data.durations[node.id]=seconds;});
