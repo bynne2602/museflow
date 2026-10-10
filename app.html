@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>26Flow · MuseFlow 0.5.0</title>
+  <title>26Flow · MuseFlow 0.5.1</title>
   <link rel="icon" type="image/png" sizes="128x128" href="icons/icon128.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="toolbar">
-    <div class="brand"><img class="brand-logo" src="icons/26flow.svg" alt="26Flow" /><strong class="brand-name">Flow</strong><span class="brand-version">0.5.0</span></div>
+    <div class="brand"><img class="brand-logo" src="icons/26flow.svg" alt="26Flow" /><strong class="brand-name">Flow</strong><span class="brand-version">0.5.1</span></div>
     <div class="toolbar-tools" aria-label="Add workflow nodes">
       <button id="scriptImportBtn" type="button">＋ Script → Nodes</button>
       <button data-add="prompt">+ Prompt</button>
@@ -40,6 +40,7 @@
   <div class="statusbar">
     <span id="museStatus">● Checking muse.ai...</span>
     <span id="backendStatus">Generation: Muse.ai browser session</span>
+    <span id="updateNotice" class="update-notice hidden" role="status"><span id="updateNoticeText"></span><a id="updateDownloadLink" href="https://github.com/bynne2602/museflow/raw/refs/heads/main/downloads/MuseFlow-extension.zip" target="_blank" rel="noopener noreferrer">Download update</a><button id="dismissUpdateBtn" type="button" aria-label="Dismiss update notice">×</button></span>
     <span id="runStatus"></span>
   </div>
 

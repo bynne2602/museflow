@@ -62,7 +62,9 @@ The packaged ZIP contains the extension, bundled FFmpeg files, and their require
 
 ### Update
 
-Replace the project files with the updated version, then select **Reload** on the browser extensions page. Reload the Muse.ai tab as well so its extension bridge is refreshed.
+Starting with version 0.5.1, MuseFlow checks for a newer version when the app opens. If one is available, a small status-bar notice links to the ZIP download; users can dismiss it or update whenever they choose. After replacing the files, select **Reload** on the browser extensions page and reload the Muse.ai tab.
+
+Versions older than 0.5.1 do not include the update checker. Users must manually install 0.5.1 once to receive notices for later releases.
 
 ## View MuseFlow and Muse.ai side by side
 

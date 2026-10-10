@@ -62,7 +62,9 @@ Gói ZIP có sẵn gồm extension, FFmpeg đi kèm và thông báo giấy phép
 
 #### Cập nhật
 
-Thay các file dự án bằng phiên bản mới, sau đó nhấn **Reload (Tải lại)** ở trang quản lý extension. Tải lại cả tab Muse.ai để cập nhật bridge của extension.
+Từ phiên bản 0.5.1, MuseFlow tự kiểm tra phiên bản mới khi mở ứng dụng. Nếu có bản mới, một thông báo nhỏ sẽ xuất hiện trên thanh trạng thái với liên kết tải ZIP; bạn có thể bỏ qua thông báo hoặc tự tải và cập nhật khi muốn. Sau khi thay file, nhấn **Reload (Tải lại)** tại trang quản lý extension và tải lại tab Muse.ai.
+
+Các bản cũ hơn 0.5.1 chưa có bộ kiểm tra cập nhật. Người dùng cần cập nhật thủ công lên phiên bản 0.5.1 một lần để nhận thông báo cho các phiên bản phát hành sau.
 
 ## Mở MuseFlow và Muse.ai cạnh nhau
 
