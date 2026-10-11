@@ -14,6 +14,12 @@
 
 [▶ Watch on YouTube](https://www.youtube.com/watch?v=w7mJwTJyzKw) · [Download the MP4 demo](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
 
+### Video tutorial
+
+[![Watch the MuseFlow workflow tutorial for Muse.ai](https://img.youtube.com/vi/_n4B9V-Daro/hqdefault.jpg)](https://www.youtube.com/watch?v=_n4B9V-Daro)
+
+[▶ Watch the MuseFlow tutorial on YouTube](https://www.youtube.com/watch?v=_n4B9V-Daro)
+
 ### Workflow canvas and Muse.ai
 
 ![26Flow workflow canvas connected to a Muse.ai session](docs/screenshots/26flow-workflow-canvas.png)

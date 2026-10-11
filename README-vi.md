@@ -26,6 +26,12 @@
 
 [▶ Xem trên YouTube](https://www.youtube.com/watch?v=w7mJwTJyzKw) · [Tải video demo MP4](https://github.com/bynne2602/museflow/releases/download/demo-2026-10-09/2026-10-09.11-17-18.mp4)
 
+### Video hướng dẫn
+
+[![Xem hướng dẫn sử dụng MuseFlow để tạo workflow video với Muse.ai](https://img.youtube.com/vi/_n4B9V-Daro/hqdefault.jpg)](https://www.youtube.com/watch?v=_n4B9V-Daro)
+
+[▶ Xem hướng dẫn MuseFlow trên YouTube](https://www.youtube.com/watch?v=_n4B9V-Daro)
+
 ### Tính năng
 
 - **Canvas node:** thêm, di chuyển, nối, chọn nhiều và sắp xếp node. Giữ **Alt** khi kéo để sao chép node hoặc nhóm node cùng các kết nối đầu vào; nhấn **Ctrl+Z** để hoàn tác chỉnh sửa workflow gần nhất. Nhấn **G** rồi kéo trên canvas để tạo khung nhóm node; nhấn **T** để thêm ghi chú văn bản trực tiếp trên canvas. Ghi chú có thể kéo, sửa, và được lưu cùng workflow. Khung nhóm được lưu trong workflow. Có thể phóng to/thu nhỏ, kéo canvas và mở thao tác bằng menu chuột phải.
