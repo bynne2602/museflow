@@ -156,12 +156,15 @@
     }
     if(!submitted||!accepted)throw new Error('Muse did not confirm the prompt submission. Check the chat box and try again; MuseFlow will not resubmit automatically.');
     const deadline=Date.now()+Math.min(900,Math.max(30,Number(timeoutSec)||600))*1000;
-    let lastProgress=Date.now(),firstWrongRatioAt=0;
+    let lastProgress=Date.now(),firstWrongRatioAt=0,wrongMediaSince=0;
     let refusalContext='',refusalContextSince=0;
     while(Date.now()<deadline){
       throwIfAborted();
       const fresh=attachments().filter(a=>!baseline.has(a.src));
       const matching=fresh.filter(a=>mediaType==='video'?a.isVideo:!a.isVideo);
+      const wrongMedia=fresh.find(a=>mediaType==='image'?a.isVideo:!a.isVideo);
+      if(wrongMedia){if(!wrongMediaSince)wrongMediaSince=Date.now();if(Date.now()-wrongMediaSince>=1800){const expected=mediaType==='image'?'image':'video',actual=mediaType==='image'?'video':'image';const error=new Error(`Muse returned a ${actual} for a Generate ${expected==='image'?'Image':'Video'} node. Switch the Muse composer to ${expected} generation, then retry.`);error.code='MEDIA_TYPE_MISMATCH';throw error;}}
+      else wrongMediaSince=0;
       const [ratioW,ratioH]=String(size||'1:1').split(':').map(Number),expectedRatio=ratioW>0&&ratioH>0?ratioW/ratioH:1;
       const measured=matching.filter(a=>a.width>0&&a.height>0).sort((a,b)=>{
         const scoreA=Math.abs(Math.log((a.width/a.height)/expectedRatio)),scoreB=Math.abs(Math.log((b.width/b.height)/expectedRatio));
