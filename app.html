@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,116 +10,116 @@
 <body>
   <header class="toolbar">
     <div class="brand"><img class="brand-logo" src="icons/26flow.svg" alt="26Flow" /><strong class="brand-name">Flow</strong><span class="brand-version">0.5.2</span></div>
-    <div class="toolbar-tools" aria-label="Add workflow nodes">
-      <button id="scriptImportBtn" type="button">＋ Script → Nodes</button>
-      <button id="addNodeMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">＋ Add node</button>
+    <div class="toolbar-tools" aria-label="Thêm node workflow">
+      <button id="scriptImportBtn" type="button">＋ Kịch bản → Node</button>
+      <button id="addNodeMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">＋ Thêm node</button>
     </div>
     <div class="toolbar-actions">
-      <button id="saveBtn">Save</button>
-      <button id="workflowExportBtn" type="button" title="Save workflow as a reusable JSON file">Save workflow</button>
-      <button id="workflowImportBtn" type="button" title="Import a saved MuseFlow workflow">Import workflow</button>
+      <button id="saveBtn">Lưu</button>
+      <button id="workflowExportBtn" type="button" title="Lưu workflow thành file JSON dùng lại">Lưu workflow</button>
+      <button id="workflowImportBtn" type="button" title="Nhập workflow MuseFlow đã lưu">Nhập workflow</button>
       <input id="workflowFileInput" type="file" accept=".json,application/json" hidden />
-      <button id="settingsBtn">Settings</button>
-      <button id="resetBtn" class="danger">Reset</button>
-      <button id="runBtn" class="primary" title="Run every node in the workflow in dependency order">▶ Run workflow</button>
-      <button id="buyCoffeeBtn" class="buy-coffee-btn" type="button" title="Support MuseFlow via VietQR">☕ Buy me a coffee</button>
+      <button id="settingsBtn">Cài đặt</button>
+      <button id="resetBtn" class="danger">Đặt lại</button>
+      <button id="runBtn" class="primary" title="Chạy toàn bộ node trong workflow theo thứ tự phụ thuộc">▶ Chạy workflow</button>
+      <button id="buyCoffeeBtn" class="buy-coffee-btn" type="button" title="Ủng hộ MuseFlow qua VietQR">☕ Ủng hộ</button>
     </div>
   </header>
 
-  <div id="addNodeMenu" class="add-node-menu hidden" role="menu" aria-label="Add node">
-    <div class="add-node-group"><span>Text</span>
+  <div id="addNodeMenu" class="add-node-menu hidden" role="menu" aria-label="Thêm node">
+    <div class="add-node-group"><span>Văn bản</span>
       <button type="button" role="menuitem" data-add="prompt">Prompt</button>
-      <button type="button" role="menuitem" data-add="negativePrompt">Negative prompt</button>
-      <button type="button" role="menuitem" data-add="textAppend">Text append</button>
-      <button type="button" role="menuitem" data-add="textConcat">Text merge</button>
-      <button type="button" role="menuitem" data-add="text">Text note</button>
+      <button type="button" role="menuitem" data-add="negativePrompt">Prompt phủ định</button>
+      <button type="button" role="menuitem" data-add="textAppend">Nối thêm chữ</button>
+      <button type="button" role="menuitem" data-add="textConcat">Gộp chữ</button>
+      <button type="button" role="menuitem" data-add="text">Ghi chú</button>
     </div>
-    <div class="add-node-group"><span>Images</span>
-      <button type="button" role="menuitem" data-add="imageInput">Image input</button>
-      <button type="button" role="menuitem" data-add="references">References</button>
-      <button type="button" role="menuitem" data-add="generateImage">Generate image</button>
-      <button type="button" role="menuitem" data-add="imageResize">Image resize</button>
-      <button type="button" role="menuitem" data-add="preview">Preview</button>
+    <div class="add-node-group"><span>Hình ảnh</span>
+      <button type="button" role="menuitem" data-add="imageInput">Ảnh đầu vào</button>
+      <button type="button" role="menuitem" data-add="references">Ảnh tham chiếu</button>
+      <button type="button" role="menuitem" data-add="generateImage">Tạo ảnh</button>
+      <button type="button" role="menuitem" data-add="imageResize">Đổi cỡ ảnh</button>
+      <button type="button" role="menuitem" data-add="preview">Xem trước</button>
     </div>
-    <div class="add-node-group"><span>Video and timeline</span>
-      <button type="button" role="menuitem" data-add="generateVideo">Generate video</button>
+    <div class="add-node-group"><span>Video và timeline</span>
+      <button type="button" role="menuitem" data-add="generateVideo">Tạo video</button>
       <button type="button" role="menuitem" data-add="timeline">Timeline</button>
     </div>
   </div>
 
   <div class="statusbar">
-    <span id="museStatus">● Checking muse.ai...</span>
-    <span id="backendStatus">Generation: Muse.ai browser session</span>
-    <span id="updateNotice" class="update-notice hidden" role="status"><span id="updateNoticeText"></span><a id="updateDownloadLink" href="https://github.com/bynne2602/museflow/raw/refs/heads/main/downloads/MuseFlow-extension.zip" target="_blank" rel="noopener noreferrer">Download update</a><button id="dismissUpdateBtn" type="button" aria-label="Dismiss update notice">×</button></span>
+    <span id="museStatus">● Đang kiểm tra muse.ai...</span>
+    <span id="backendStatus">Tạo sinh: phiên trình duyệt Muse.ai</span>
+    <span id="updateNotice" class="update-notice hidden" role="status"><span id="updateNoticeText"></span><a id="updateDownloadLink" href="https://github.com/bynne2602/museflow/raw/refs/heads/main/downloads/MuseFlow-extension.zip" target="_blank" rel="noopener noreferrer">Tải bản mới</a><button id="dismissUpdateBtn" type="button" aria-label="Ẩn thông báo cập nhật">×</button></span>
     <span id="runStatus"></span>
   </div>
 
   <main id="viewport">
     <svg id="edges"></svg>
     <div id="canvas"></div>
-    <div id="canvasTools" class="canvas-tools" aria-label="Canvas controls">
-      <button id="handTool" type="button" title="Hand tool (H) · Hold Space to pan · Alt-drag to copy · Ctrl+Z to undo · G group · T Text note">✋</button>
-      <button id="groupTool" type="button" title="Draw a group region (G)">▱</button>
-      <button id="zoomOut" type="button" title="Zoom out">−</button>
+    <div id="canvasTools" class="canvas-tools" aria-label="Điều khiển canvas">
+      <button id="handTool" type="button" title="Công cụ tay (H) · Giữ Space để di chuyển · Alt-kéo để sao chép · Ctrl+Z để hoàn tác · G tạo nhóm · T ghi chú">✋</button>
+      <button id="groupTool" type="button" title="Vẽ vùng nhóm (G)">▱</button>
+      <button id="zoomOut" type="button" title="Thu nhỏ">−</button>
       <span id="zoomLevel">100%</span>
-      <button id="zoomIn" type="button" title="Zoom in">＋</button>
-      <button id="fitCanvas" type="button" title="Fit all nodes">Fit</button>
+      <button id="zoomIn" type="button" title="Phóng to">＋</button>
+      <button id="fitCanvas" type="button" title="Vừa toàn bộ node">Vừa</button>
     </div>
   </main>
-  <section id="timelineDock" class="timeline-dock collapsed" aria-label="Video timeline">
-    <div class="timeline-dock-header"><div class="timeline-heading"><strong>Timeline</strong><span id="timelineClipCount">0 clips</span><small>Arrange scenes · drag clips to reorder</small></div><div class="timeline-dock-actions"><button id="timelineImportAllBtn" type="button" title="Add every Generate Video node to the timeline">＋ Import all videos</button><div class="timeline-output-picker"><button id="timelineAddVideoBtn" type="button" title="Add a video output">＋ Add clip</button><div id="timelineOutputMenu" class="timeline-output-menu hidden"></div></div><button id="timelinePlayBtn" type="button" title="Preview sequence">▶ Preview</button><select id="timelineExportFormat" title="Choose export format"><option value="webm">WebM</option><option value="mp4">MP4 (H.264)</option></select><button id="timelineExportBtn" type="button" title="Export the full stitched timeline video">⇩ Export</button><button id="timelineExportStopBtn" class="timeline-export-stop hidden" type="button" title="Stop timeline export">■ Stop</button><button id="timelineToggleBtn" type="button" aria-expanded="false" title="Show timeline">▲</button></div></div>
-    <div id="timelineDropZone" class="timeline-drop-zone">Drag a Generate Video node or video clip here</div>
+  <section id="timelineDock" class="timeline-dock collapsed" aria-label="Timeline video">
+    <div class="timeline-dock-header"><div class="timeline-heading"><strong>Timeline</strong><span id="timelineClipCount">0 clip</span><small>Sắp xếp cảnh · kéo clip để đổi thứ tự</small></div><div class="timeline-dock-actions"><button id="timelineImportAllBtn" type="button" title="Thêm mọi node Tạo Video vào timeline">＋ Nhập tất cả video</button><div class="timeline-output-picker"><button id="timelineAddVideoBtn" type="button" title="Thêm một đầu ra video">＋ Thêm clip</button><div id="timelineOutputMenu" class="timeline-output-menu hidden"></div></div><button id="timelinePlayBtn" type="button" title="Xem trước chuỗi">▶ Xem trước</button><select id="timelineExportFormat" title="Chọn định dạng xuất"><option value="webm">WebM</option><option value="mp4">MP4 (H.264)</option></select><button id="timelineExportBtn" type="button" title="Xuất toàn bộ video timeline đã ghép">⇩ Xuất</button><button id="timelineExportStopBtn" class="timeline-export-stop hidden" type="button" title="Dừng xuất timeline">■ Dừng</button><button id="timelineToggleBtn" type="button" aria-expanded="false" title="Hiện timeline">▲</button></div></div>
+    <div id="timelineDropZone" class="timeline-drop-zone">Kéo node Tạo Video hoặc clip video vào đây</div>
     <div class="timeline-dock-content"><div id="timelineTrack" class="timeline-dock-track"></div></div>
   </section>
 
-  <aside id="timelinePreviewPanel" class="timeline-preview-panel hidden" aria-label="Timeline video preview">
-    <header><strong>Timeline Preview</strong><button id="closeTimelinePreview" type="button" aria-label="Close preview">×</button></header>
+  <aside id="timelinePreviewPanel" class="timeline-preview-panel hidden" aria-label="Xem trước video timeline">
+    <header><strong>Xem trước Timeline</strong><button id="closeTimelinePreview" type="button" aria-label="Đóng xem trước">×</button></header>
     <div class="timeline-preview-stage"><video id="timelinePlayer" class="is-active" controls playsinline preload="auto"></video><video id="timelinePlayerNext" playsinline preload="auto"></video></div>
-    <div class="timeline-preview-caption">Scene playback</div>
+    <div class="timeline-preview-caption">Phát cảnh</div>
   </aside>
 
   <div id="canvasMenu" class="canvas-menu hidden" role="menu">
-    <div class="menu-caption">Add node</div>
+    <div class="menu-caption">Thêm node</div>
     <button data-context-action="add:prompt" role="menuitem">＋ Prompt</button>
-    <button data-context-action="add:negativePrompt" role="menuitem">＋ Negative Prompt</button>
-    <button data-context-action="add:text" role="menuitem">＋ Text note</button>
-    <button data-context-action="add:textAppend" role="menuitem">＋ Text Append</button>
-    <button data-context-action="add:textConcat" role="menuitem">＋ Text Merge</button>
-    <button data-context-action="add:imageInput" role="menuitem">＋ Image Input</button>
-    <button data-context-action="add:references" role="menuitem">＋ References</button>
-    <button data-context-action="add:generateImage" role="menuitem">＋ Generate Image</button>
-    <button data-context-action="add:generateVideo" role="menuitem">＋ Generate Video</button>
+    <button data-context-action="add:negativePrompt" role="menuitem">＋ Prompt phủ định</button>
+    <button data-context-action="add:text" role="menuitem">＋ Ghi chú</button>
+    <button data-context-action="add:textAppend" role="menuitem">＋ Nối thêm chữ</button>
+    <button data-context-action="add:textConcat" role="menuitem">＋ Gộp chữ</button>
+    <button data-context-action="add:imageInput" role="menuitem">＋ Ảnh đầu vào</button>
+    <button data-context-action="add:references" role="menuitem">＋ Ảnh tham chiếu</button>
+    <button data-context-action="add:generateImage" role="menuitem">＋ Tạo ảnh</button>
+    <button data-context-action="add:generateVideo" role="menuitem">＋ Tạo video</button>
     <button data-context-action="add:timeline" role="menuitem">＋ Timeline</button>
-    <button data-context-action="add:imageResize" role="menuitem">＋ Image Resize</button>
-    <button data-context-action="add:preview" role="menuitem">＋ Preview</button>
+    <button data-context-action="add:imageResize" role="menuitem">＋ Đổi cỡ ảnh</button>
+    <button data-context-action="add:preview" role="menuitem">＋ Xem trước</button>
     <div class="menu-divider"></div>
-    <button data-context-action="save" role="menuitem">Save workflow</button>
-    <button data-context-action="run" role="menuitem">▶ Run workflow</button>
-    <button data-context-action="arrange" role="menuitem">Arrange nodes</button>
+    <button data-context-action="save" role="menuitem">Lưu workflow</button>
+    <button data-context-action="run" role="menuitem">▶ Chạy workflow</button>
+    <button data-context-action="arrange" role="menuitem">Sắp xếp node</button>
     <div class="menu-divider"></div>
-    <button data-context-action="delete-selected" role="menuitem">Delete selected node</button>
-    <button data-context-action="disconnect-all" role="menuitem">Remove all connections</button>
+    <button data-context-action="delete-selected" role="menuitem">Xóa node đã chọn</button>
+    <button data-context-action="disconnect-all" role="menuitem">Gỡ mọi kết nối</button>
   </div>
 
   <div id="settingsModal" class="modal-backdrop hidden">
     <section class="modal">
-      <h2>Muse.ai session</h2>
-      <p>MuseFlow uses your signed-in Muse.ai browser tab directly. Keep the Muse chat tab open while a workflow runs.</p>
-      <div class="connection-check"><button id="testMuseBtn" type="button">Check Muse session</button><span id="connectionStatus" role="status"></span></div>
+      <h2>Phiên Muse.ai</h2>
+      <p>MuseFlow dùng trực tiếp tab trình duyệt Muse.ai mà bạn đã đăng nhập. Hãy giữ tab chat Muse mở trong khi workflow đang chạy.</p>
+      <div class="connection-check"><button id="testMuseBtn" type="button">Kiểm tra phiên Muse</button><span id="connectionStatus" role="status"></span></div>
       <div class="modal-actions">
-        <button id="closeSettingsBtn">Cancel</button>
-        <button id="saveSettingsBtn" class="primary">Save</button>
+        <button id="closeSettingsBtn">Hủy</button>
+        <button id="saveSettingsBtn" class="primary">Lưu</button>
       </div>
     </section>
   </div>
 
   <div id="groupNameModal" class="modal-backdrop hidden">
     <section class="modal group-name-modal" role="dialog" aria-modal="true" aria-labelledby="groupNameTitle">
-      <div class="group-name-heading"><span id="nameDialogIcon" class="group-name-icon" aria-hidden="true">▱</span><div><h2 id="groupNameTitle">Name group</h2><p id="groupNameDescription">Skip to use the default name.</p></div></div>
-      <label class="group-name-field" for="groupNameInput"><span id="nameDialogLabel">Name</span><input id="groupNameInput" type="text" maxlength="80" autocomplete="off" placeholder="Group 1"></label>
+      <div class="group-name-heading"><span id="nameDialogIcon" class="group-name-icon" aria-hidden="true">▱</span><div><h2 id="groupNameTitle">Đặt tên nhóm</h2><p id="groupNameDescription">Bỏ qua để dùng tên mặc định.</p></div></div>
+      <label class="group-name-field" for="groupNameInput"><span id="nameDialogLabel">Tên</span><input id="groupNameInput" type="text" maxlength="80" autocomplete="off" placeholder="Nhóm 1"></label>
       <div class="modal-actions">
-        <button id="skipGroupNameBtn" type="button">Skip</button>
-        <button id="cancelNodeRenameBtn" class="hidden" type="button">Cancel</button>
+        <button id="skipGroupNameBtn" type="button">Bỏ qua</button>
+        <button id="cancelNodeRenameBtn" class="hidden" type="button">Hủy</button>
         <button id="confirmGroupNameBtn" type="button" class="primary">OK</button>
       </div>
     </section>
@@ -127,27 +127,27 @@
 
   <div id="donationModal" class="modal-backdrop hidden">
     <section class="modal donation-modal" role="dialog" aria-modal="true" aria-labelledby="donationModalTitle">
-      <header class="donation-header"><div><h2 id="donationModalTitle">Buy me a coffee</h2><p>Ủng hộ MuseFlow qua VietQR</p></div><button id="closeDonationBtn" type="button" aria-label="Close">×</button></header>
-      <img id="donationQrImage" class="donation-qr" src="https://img.vietqr.io/image/VCB-0331000500621-compact2.png?addInfo=BUY%20ME%20A%20COFFEE&amp;accountName=NGUYEN%20TAN%20THANH" alt="VietQR for Nguyen Tan Thanh at Vietcombank" />
-      <div id="donationQrFallback" class="donation-qr-fallback hidden">QR preview could not be loaded. Open the VietQR image directly below.</div>
+      <header class="donation-header"><div><h2 id="donationModalTitle">Ủng hộ tôi</h2><p>Ủng hộ MuseFlow qua VietQR</p></div><button id="closeDonationBtn" type="button" aria-label="Đóng">×</button></header>
+      <img id="donationQrImage" class="donation-qr" src="https://img.vietqr.io/image/VCB-0331000500621-compact2.png?addInfo=BUY%20ME%20A%20COFFEE&amp;accountName=NGUYEN%20TAN%20THANH" alt="VietQR của Nguyen Tan Thanh tại Vietcombank" />
+      <div id="donationQrFallback" class="donation-qr-fallback hidden">Không tải được ảnh QR. Hãy mở ảnh VietQR trực tiếp bên dưới.</div>
       <div class="donation-details"><span>Vietcombank</span><strong>0331000500621</strong><span>NGUYEN TAN THANH</span></div>
-      <a class="donation-open-link" href="https://img.vietqr.io/image/VCB-0331000500621-compact2.png?addInfo=BUY%20ME%20A%20COFFEE&amp;accountName=NGUYEN%20TAN%20THANH" target="_blank" rel="noopener noreferrer">Open VietQR in a new tab</a>
+      <a class="donation-open-link" href="https://img.vietqr.io/image/VCB-0331000500621-compact2.png?addInfo=BUY%20ME%20A%20COFFEE&amp;accountName=NGUYEN%20TAN%20THANH" target="_blank" rel="noopener noreferrer">Mở VietQR trong tab mới</a>
       <a class="donation-bmac-link" href="https://buymeacoffee.com/bynne2602i" target="_blank" rel="noopener noreferrer">Buy Me a Coffee ↗</a>
     </section>
   </div>
 
   <div id="scriptModal" class="modal-backdrop hidden">
     <section class="modal script-modal" role="dialog" aria-modal="true" aria-labelledby="scriptModalTitle">
-      <h2 id="scriptModalTitle">Build nodes from a scene script</h2>
-      <p>Paste a scene script using the Grumbo &amp; Snowy form. MuseFlow reads each scene’s opening/ending frames, timed actions, image/video prompts, audio, shared locks and negative prompt, then connects the scene nodes and orders videos on the Timeline.</p>
-      <p class="script-template-hint">Download the strict template to fill in yourself or give to an AI. Keep the headings and field order unchanged.</p>
-      <label for="scriptInput">Script</label>
-      <textarea id="scriptInput" placeholder="CẢNH 1 (0:00 đến 0:10): Scene title&#10;Khung đầu: ...&#10;Khung cuối: ...&#10;Diễn biến: 1. 0-2s: ...&#10;Prompt ảnh khung đầu: ...&#10;Prompt video: ...&#10;Audio: ..."></textarea>
+      <h2 id="scriptModalTitle">Tạo node từ kịch bản cảnh</h2>
+      <p>Dán kịch bản theo mẫu Grumbo &amp; Snowy. MuseFlow sẽ đọc khung đầu/khung cuối, diễn biến theo mốc giờ, prompt ảnh/video, âm thanh, khóa chung và prompt phủ định của từng cảnh, rồi nối node và xếp video lên Timeline.</p>
+      <p class="script-template-hint">Tải mẫu chuẩn để tự điền hoặc gửi cho AI. Giữ nguyên tiêu đề và thứ tự các trường.</p>
+      <label for="scriptInput">Kịch bản</label>
+      <textarea id="scriptInput" placeholder="CẢNH 1 (0:00 đến 0:10): Tên cảnh&#10;Khung đầu: ...&#10;Khung cuối: ...&#10;Diễn biến: 1. 0-2s: ...&#10;Prompt ảnh khung đầu: ...&#10;Prompt video: ...&#10;Audio: ..."></textarea>
       <div id="scriptImportStatus" role="status"></div>
       <div class="modal-actions">
-        <a id="downloadScriptTemplate" class="script-template-download" href="templates/museflow-scene-script-template-vi.txt" download="MuseFlow_Scene_Script_Template_VI.txt">⇩ Download strict template</a>
-        <button id="cancelScriptImport" type="button">Cancel</button>
-        <button id="buildScriptNodes" type="button" class="primary">Create scene nodes</button>
+        <a id="downloadScriptTemplate" class="script-template-download" href="templates/museflow-scene-script-template-vi.txt" download="MuseFlow_Scene_Script_Template_VI.txt">⇩ Tải mẫu chuẩn</a>
+        <button id="cancelScriptImport" type="button">Hủy</button>
+        <button id="buildScriptNodes" type="button" class="primary">Tạo node cảnh</button>
       </div>
     </section>
   </div>
